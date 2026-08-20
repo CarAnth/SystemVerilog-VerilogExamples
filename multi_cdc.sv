@@ -89,7 +89,7 @@ module multi_cdc (
 
 
     always_ff @( posedge src_clk or negedge src_rst_n ) begin
-        if (src_rst_n) begin
+        if (!src_rst_n) begin
             ack_ff1 <=1'b0;
             ack_ff2 <=1'b0;
         end else begin
@@ -99,3 +99,4 @@ module multi_cdc (
     end
    
 endmodule
+
