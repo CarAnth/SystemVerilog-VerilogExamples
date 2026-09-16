@@ -46,7 +46,7 @@ module multi_cdc (
     //source register
     always_ff @( posedge src_clk or negedge src_rst_n ) begin
         if (!src_rst_n) begin
-            data_hold   <= '0;
+            data_hold   <= 8'b00000000;
             req_toggle  <= 1'b0; 
         end else begin
             if (src_valid && !src_busy) begin
@@ -71,6 +71,7 @@ module multi_cdc (
             req_sync_d  <= 1'b0;
             dst_valid   <= 1'b0;
             ack_toggle  <= 1'b0;
+            dst_data    <= 1'b0;
        end else begin
         req_sync_d <= req_ff2;
 
