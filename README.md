@@ -48,49 +48,15 @@ HDL filenames are retained. The multi-bit CDC example also depends on
 
 ## Requirements
 
-- Python 3.8 or later for the simulation runner; no third-party Python packages.
 - Icarus Verilog (`iverilog` and `vvp`) for Verilog/SystemVerilog simulation.
 - GHDL for VHDL simulation using VHDL-2008.
 - GTKWave, optionally, for inspecting generated VCD waveforms.
 
-The tools must be available on your terminal's `PATH`. On Windows, use
-`python` in place of `python3` if that is the command installed on your system.
-The runner works from PowerShell, Bash, or another terminal with these tools
-on `PATH`.
-
 ## Quick start
-
-```bash
-git clone https://github.com/CarAnth/SystemVerilog-VerilogExamples.git
-cd SystemVerilog-VerilogExamples
-
-# List the runnable examples and their top-level testbench names.
-python3 scripts/run.py --list
-
-# Run one example.
-python3 scripts/run.py counter-sv
-
-# Run every supported testbench.
-python3 scripts/run.py all
-```
-
-Each example runs in its own `build/<target>/` directory. This keeps waveforms
-and compiled outputs out of the source directories and prevents collisions
-between testbenches with the same module or entity name.
-
-The runner returns a nonzero exit code on compilation errors, reported
-testbench failures, missing tools, or timeouts. It also checks text output
-because some existing benches use `$error` or `$display` without returning a
-nonzero process exit code. The default timeout is 30 seconds per command:
-
-```bash
-python3 scripts/run.py uart-rx --timeout 60
-```
 
 ### View a waveform
 
 ```bash
-python3 scripts/run.py counter-sv
 gtkwave build/counter-sv/tb_counter.vcd
 ```
 
@@ -99,9 +65,6 @@ Verilog/SystemVerilog waveform filenames are set by each testbench's
 `build/counter-vhdl/counter-vhdl.vcd`.
 
 ## Run manually
-
-The Python runner is optional. The following commands start from the
-repository root and use separate build directories.
 
 ### SystemVerilog counter
 
