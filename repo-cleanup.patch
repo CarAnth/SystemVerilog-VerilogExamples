@@ -1,0 +1,5363 @@
+diff --git a/2ff.out b/2ff.out
+deleted file mode 100644
+index 9a46c0e..0000000
+--- a/2ff.out
++++ /dev/null
+@@ -1,165 +0,0 @@
+-#! /c/Source/iverilog-install/bin/vvp
+-:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+-:ivl_delay_selection "TYPICAL";
+-:vpi_time_precision + 0;
+-:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+-S_000002c8fb1f9d60 .scope package, "$unit" "$unit" 2 1;
+- .timescale 0 0;
+-S_000002c8fb0c8e40 .scope module, "tb_two_ff" "tb_two_ff" 3 1;
+- .timescale 0 0;
+-v000002c8fb1fb210_0 .var "async_in", 0 0;
+-v000002c8fb1fb2b0_0 .var "clk", 0 0;
+-v000002c8fb1fb350_0 .var "rst_n", 0 0;
+-v000002c8fb1fb3f0_0 .net "sync_out", 0 0, L_000002c8fb0c9bd0;  1 drivers
+-E_000002c8fb0b5520 .event negedge, v000002c8fb093120_0;
+-E_000002c8fb0b5c60 .event posedge, v000002c8fb093120_0;
+-S_000002c8fb0c8fd0 .scope module, "uut" "two_ff" 3 7, 4 1 0, S_000002c8fb0c8e40;
+- .timescale 0 0;
+-    .port_info 0 /INPUT 1 "clk";
+-    .port_info 1 /INPUT 1 "rst_n";
+-    .port_info 2 /INPUT 1 "async_in";
+-    .port_info 3 /OUTPUT 1 "sync_out";
+-L_000002c8fb0c9bd0 .functor BUFZ 1, v000002c8fb0c9200_0, C4<0>, C4<0>, C4<0>;
+-v000002c8fb0939a0_0 .net "async_in", 0 0, v000002c8fb1fb210_0;  1 drivers
+-v000002c8fb093120_0 .net "clk", 0 0, v000002c8fb1fb2b0_0;  1 drivers
+-v000002c8fb0c9160_0 .var "ff1", 0 0;
+-v000002c8fb0c9200_0 .var "ff2", 0 0;
+-v000002c8fb1fb0d0_0 .net "rst_n", 0 0, v000002c8fb1fb350_0;  1 drivers
+-v000002c8fb1fb170_0 .net "sync_out", 0 0, L_000002c8fb0c9bd0;  alias, 1 drivers
+-E_000002c8fb0b52e0/0 .event negedge, v000002c8fb1fb0d0_0;
+-E_000002c8fb0b52e0/1 .event posedge, v000002c8fb093120_0;
+-E_000002c8fb0b52e0 .event/or E_000002c8fb0b52e0/0, E_000002c8fb0b52e0/1;
+-    .scope S_000002c8fb0c8fd0;
+-T_0 ;
+-    %wait E_000002c8fb0b52e0;
+-    %load/vec4 v000002c8fb1fb0d0_0;
+-    %nor/r;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_0.0, 8;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v000002c8fb0c9160_0, 0;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v000002c8fb0c9200_0, 0;
+-    %jmp T_0.1;
+-T_0.0 ;
+-    %load/vec4 v000002c8fb0939a0_0;
+-    %assign/vec4 v000002c8fb0c9160_0, 0;
+-    %load/vec4 v000002c8fb0c9160_0;
+-    %assign/vec4 v000002c8fb0c9200_0, 0;
+-T_0.1 ;
+-    %jmp T_0;
+-    .thread T_0;
+-    .scope S_000002c8fb0c8e40;
+-T_1 ;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v000002c8fb1fb2b0_0, 0, 1;
+-T_1.0 ;
+-    %delay 5, 0;
+-    %load/vec4 v000002c8fb1fb2b0_0;
+-    %inv;
+-    %store/vec4 v000002c8fb1fb2b0_0, 0, 1;
+-    %jmp T_1.0;
+-    %end;
+-    .thread T_1;
+-    .scope S_000002c8fb0c8e40;
+-T_2 ;
+-    %vpi_call/w 3 20 "$dumpfile", "tb_two_ff.vcd" {0 0 0};
+-    %vpi_call/w 3 21 "$dumpvars", 32'sb00000000000000000000000000000000, S_000002c8fb0c8e40 {0 0 0};
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v000002c8fb1fb350_0, 0, 1;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v000002c8fb1fb210_0, 0, 1;
+-    %pushi/vec4 2, 0, 32;
+-T_2.0 %dup/vec4;
+-    %pushi/vec4 0, 0, 32;
+-    %cmp/s;
+-    %jmp/1xz T_2.1, 5;
+-    %jmp/1 T_2.1, 4;
+-    %pushi/vec4 1, 0, 32;
+-    %sub;
+-    %wait E_000002c8fb0b5c60;
+-    %jmp T_2.0;
+-T_2.1 ;
+-    %pop/vec4 1;
+-    %wait E_000002c8fb0b5520;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v000002c8fb1fb350_0, 0, 1;
+-    %load/vec4 v000002c8fb1fb3f0_0;
+-    %cmpi/ne 0, 0, 1;
+-    %jmp/0xz  T_2.2, 6;
+-    %vpi_call/w 3 31 "$error", "Error: sync_out should be 0 after reset" {0 0 0};
+-T_2.2 ;
+-    %wait E_000002c8fb0b5520;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v000002c8fb1fb210_0, 0, 1;
+-    %wait E_000002c8fb0b5c60;
+-    %wait E_000002c8fb0b5520;
+-    %load/vec4 v000002c8fb1fb3f0_0;
+-    %cmpi/ne 0, 0, 1;
+-    %jmp/0xz  T_2.4, 6;
+-    %vpi_call/w 3 39 "$error", "Error: sync_out should be 0 after first clock cycle" {0 0 0};
+-T_2.4 ;
+-    %wait E_000002c8fb0b5c60;
+-    %wait E_000002c8fb0b5520;
+-    %load/vec4 v000002c8fb1fb3f0_0;
+-    %cmpi/ne 1, 0, 1;
+-    %jmp/0xz  T_2.6, 6;
+-    %vpi_call/w 3 44 "$error", "Error: sync_out should be 1 after second clock cycle" {0 0 0};
+-T_2.6 ;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v000002c8fb1fb210_0, 0, 1;
+-    %pushi/vec4 2, 0, 32;
+-T_2.8 %dup/vec4;
+-    %pushi/vec4 0, 0, 32;
+-    %cmp/s;
+-    %jmp/1xz T_2.9, 5;
+-    %jmp/1 T_2.9, 4;
+-    %pushi/vec4 1, 0, 32;
+-    %sub;
+-    %wait E_000002c8fb0b5c60;
+-    %jmp T_2.8;
+-T_2.9 ;
+-    %pop/vec4 1;
+-    %wait E_000002c8fb0b5520;
+-    %delay 1, 0;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v000002c8fb1fb210_0, 0, 1;
+-    %delay 3, 0;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v000002c8fb1fb210_0, 0, 1;
+-    %pushi/vec4 2, 0, 32;
+-T_2.10 %dup/vec4;
+-    %pushi/vec4 0, 0, 32;
+-    %cmp/s;
+-    %jmp/1xz T_2.11, 5;
+-    %jmp/1 T_2.11, 4;
+-    %pushi/vec4 1, 0, 32;
+-    %sub;
+-    %wait E_000002c8fb0b5c60;
+-    %jmp T_2.10;
+-T_2.11 ;
+-    %pop/vec4 1;
+-    %wait E_000002c8fb0b5520;
+-    %load/vec4 v000002c8fb1fb3f0_0;
+-    %cmpi/ne 0, 0, 1;
+-    %jmp/0xz  T_2.12, 6;
+-    %vpi_call/w 3 58 "$error", "Error: sync_out should be 0 after async_in change" {0 0 0};
+-    %jmp T_2.13;
+-T_2.12 ;
+-    %vpi_call/w 3 60 "$display", "Test passed: sync_out is 0 after async_in change" {0 0 0};
+-T_2.13 ;
+-    %vpi_call/w 3 62 "$finish" {0 0 0};
+-    %end;
+-    .thread T_2;
+-# The file index is used to find the file name in the following table.
+-:file_names 5;
+-    "N/A";
+-    "<interactive>";
+-    "-";
+-    "two_ff_tb.sv";
+-    "2_ff.sv";
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..3168d1c
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1,192 @@
++# SystemVerilog, Verilog & VHDL Examples
++
++A collection of small RTL designs and simulation testbenches for practicing
++digital design in SystemVerilog, Verilog, and VHDL. The examples cover counters,
++finite state machines, UART, arbitration, FIFOs, ready/valid handshakes, and
++clock domain crossing (CDC).
++
++The counter and sequence detector have implementations in all three languages
++for comparing coding styles and equivalent behavior. The other examples use
++SystemVerilog.
++
++## Examples
++
++| Topic | Implementation | Language | Simulation target |
++| --- | --- | --- | --- |
++| Programmable counter | Enable, parallel load, programmable limit, one-cycle limit pulse | SystemVerilog / Verilog / VHDL | `counter-sv`, `counter-v`, `counter-vhdl` |
++| Sequence detector | Overlapping `1011` detection with valid-gated input and registered match | SystemVerilog / Verilog / VHDL | `fsm-sv`, `fsm-v`, `fsm-vhdl` |
++| UART transmitter | FSM-based serial transmission, 8 data bits, no parity, 1 stop bit | SystemVerilog | `uart-tx` |
++| UART receiver | Start-bit qualification, serial reception, data-valid indication | SystemVerilog | `uart-rx` |
++| Fixed-priority arbiter | Four requesters; requester 0 has highest priority | SystemVerilog | `fixed-arbiter` |
++| Round-robin arbiter | Four requesters with rotating priority | SystemVerilog | `round-robin` |
++| Synchronous FIFO | Parameterized width/depth, full/empty flags, registered read data | SystemVerilog | `sync-fifo` |
++| Ready/valid buffer | One-entry data buffer with backpressure | SystemVerilog | `valid-handshake` |
++| Two-flop synchronizer | Single-bit level synchronization | SystemVerilog | `two-ff` |
++| Pulse synchronizer | Toggle-based pulse transfer; bench demonstrates missed fast pulses | SystemVerilog | `pulse-sync` |
++| CDC handshake | Request/acknowledge toggles with a source busy flag | SystemVerilog | `cdc-handshake` |
++| Multi-bit CDC | Held 8-bit payload with request/acknowledge handshake and per-domain reset synchronization | SystemVerilog | `multi-cdc` |
++| Reset synchronizer | Asynchronous assertion and two-stage synchronous release | SystemVerilog | `reset-sync` |
++| Asynchronous FIFO | Work in progress: interface and pointer declarations only | SystemVerilog | Not runnable yet |
++
++## Repository layout
++
++| Directory | Contents |
++| --- | --- |
++| [`examples/counters/`](examples/counters/) | Counter RTL and testbenches, separated by language |
++| [`examples/fsm/`](examples/fsm/) | Sequence detector RTL and testbenches, separated by language |
++| [`examples/uart/`](examples/uart/) | Separate transmitter and receiver examples |
++| [`examples/arbiters/`](examples/arbiters/) | Fixed-priority and round-robin examples |
++| [`examples/fifo/`](examples/fifo/) | Synchronous FIFO and asynchronous FIFO draft |
++| [`examples/handshake/`](examples/handshake/) | Ready/valid buffer and testbench |
++| [`examples/cdc/`](examples/cdc/) | Level, pulse, handshake, multi-bit, and reset synchronization |
++| [`scripts/`](scripts/) | Python simulation runner and explicit source-file manifest |
++| `build/` | Generated simulation executables and waveforms; ignored by Git |
++
++RTL and its testbench are kept together in each example directory. Original
++HDL filenames are retained. The multi-bit CDC example also depends on
++`examples/cdc/reset/reset_synchronizer.sv`; the runner includes it automatically.
++
++## Requirements
++
++- Python 3.8 or later for the simulation runner; no third-party Python packages.
++- Icarus Verilog (`iverilog` and `vvp`) for Verilog/SystemVerilog simulation.
++- GHDL for VHDL simulation using VHDL-2008.
++- GTKWave, optionally, for inspecting generated VCD waveforms.
++
++The tools must be available on your terminal's `PATH`. On Windows, use
++`python` in place of `python3` if that is the command installed on your system.
++The runner works from PowerShell, Bash, or another terminal with these tools
++on `PATH`.
++
++## Quick start
++
++```bash
++git clone https://github.com/CarAnth/SystemVerilog-VerilogExamples.git
++cd SystemVerilog-VerilogExamples
++
++# List the runnable examples and their top-level testbench names.
++python3 scripts/run.py --list
++
++# Run one example.
++python3 scripts/run.py counter-sv
++
++# Run every supported testbench.
++python3 scripts/run.py all
++```
++
++Each example runs in its own `build/<target>/` directory. This keeps waveforms
++and compiled outputs out of the source directories and prevents collisions
++between testbenches with the same module or entity name.
++
++The runner returns a nonzero exit code on compilation errors, reported
++testbench failures, missing tools, or timeouts. It also checks text output
++because some existing benches use `$error` or `$display` without returning a
++nonzero process exit code. The default timeout is 30 seconds per command:
++
++```bash
++python3 scripts/run.py uart-rx --timeout 60
++```
++
++### View a waveform
++
++```bash
++python3 scripts/run.py counter-sv
++gtkwave build/counter-sv/tb_counter.vcd
++```
++
++Verilog/SystemVerilog waveform filenames are set by each testbench's
++`$dumpfile` call. VHDL waveforms are named after the target, for example
++`build/counter-vhdl/counter-vhdl.vcd`.
++
++## Run manually
++
++The Python runner is optional. The following commands start from the
++repository root and use separate build directories.
++
++### SystemVerilog counter
++
++```bash
++mkdir -p build/manual-counter-sv
++cd build/manual-counter-sv
++iverilog -g2012 -s tb_counter -o sim.vvp \
++  ../../examples/counters/systemverilog/programmable_counter.sv \
++  ../../examples/counters/systemverilog/tb_counter.sv
++vvp sim.vvp
++cd ../..
++```
++
++### Verilog counter
++
++```bash
++mkdir -p build/manual-counter-v
++cd build/manual-counter-v
++iverilog -g2012 -s tb_counter -o sim.vvp \
++  ../../examples/counters/verilog/programmable_counter.v \
++  ../../examples/counters/verilog/testbench.v
++vvp sim.vvp
++cd ../..
++```
++
++The runner and this command use `-g2012` for both `.v` and `.sv` benches;
++some Verilog benches use SystemVerilog simulation tasks such as `$error`.
++
++### VHDL counter
++
++```bash
++mkdir -p build/manual-counter-vhdl
++cd build/manual-counter-vhdl
++ghdl -a --std=08 \
++  ../../examples/counters/vhdl/programmable_counter.vhd \
++  ../../examples/counters/vhdl/tb_counter_vhdl.vhd
++ghdl -e --std=08 tb_programmable_counter
++ghdl -r --std=08 tb_programmable_counter \
++  --assert-level=error --vcd=counter.vcd
++cd ../..
++```
++
++These manual examples use Bash syntax. Use the Python runner for a consistent
++command across Windows and Linux.
++
++## Simulation status and current limitations
++
++All **17 runnable testbenches** completed without reported errors using Icarus
++Verilog 12.0 and GHDL 4.1.0 on Linux. This describes the existing directed
++simulations; it does not establish exhaustive verification, synthesis results,
++timing closure, or FPGA hardware validation.
++
++- **Asynchronous FIFO:** `async_fifo.sv` is an unfinished draft, including
++  syntax and port-direction issues. It has no implemented read/write logic or
++  testbench and is excluded from the runner.
++- **Pulse synchronization:** the current bench sends two pulses too close
++  together for the destination clock and demonstrates that they can be lost.
++  It is a demonstration, not a self-checking lossless-transfer test.
++- **CDC verification:** the handshake bench only checks a limited condition;
++  the multi-bit bench checks one payload. Digital simulation does not model
++  analog metastability or establish CDC correctness in hardware.
++- **UART parameters:** TX and RX currently use two-bit baud counters. The
++  default four clocks per bit is exercised; larger divisors require widening
++  these counters. The RX example samples `rx` directly and does not include an
++  input synchronizer.
++- **FIFO depth:** the synchronous FIFO uses natural binary pointer wrapping.
++  Use a power-of-two depth of at least two; other depths are not supported by
++  the current pointer logic.
++- **VHDL practice bench:** `examples/fsm/vhdl/prac_tb.vhd` is a reset-only
++  exercise with no automatic finish. Use `tb_fsmvhdl.vhd` for the runnable FSM
++  test; the practice bench is excluded from `all`.
++- **Timescales:** several original Verilog/SystemVerilog files have no explicit
++  timescale. Interpret their delays according to the simulator default.
++
++The reset bench waits for nonblocking assignments before checking reset
++assertion, and the multi-bit CDC bench supplies a numeric code to `$fatal` for
++Icarus compatibility.
++
++## Adding an example
++
++1. Create a topic directory under `examples/` and add the RTL and testbench.
++2. Add its language, top-level testbench, and ordered source list to
++   `scripts/examples.json`. Include any shared dependencies.
++3. Make the testbench terminate and report mismatches clearly.
++4. Run it with `python3 scripts/run.py <target>` and update the examples table.
++
++Keep generated executables, simulator databases, and waveforms in `build/`.
++They can be regenerated and should not be committed.
+diff --git a/a.out b/a.out
+deleted file mode 100644
+index 531b56b..0000000
+--- a/a.out
++++ /dev/null
+@@ -1,223 +0,0 @@
+-#! /c/Source/iverilog-install/bin/vvp
+-:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+-:ivl_delay_selection "TYPICAL";
+-:vpi_time_precision + 0;
+-:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+-S_0000015ade5368b0 .scope package, "$unit" "$unit" 2 1;
+- .timescale 0 0;
+-S_0000015ade536a40 .scope module, "tb_fixed_arbiter" "tb_fixed_arbiter" 3 1;
+- .timescale 0 0;
+-v0000015ade502ff0_0 .net "grant", 3 0, v0000015ade502eb0_0;  1 drivers
+-v0000015ade503090_0 .var "req", 3 0;
+-S_0000015ade502d20 .scope autotask, "check_arbiter" "check_arbiter" 3 11, 3 11 0, S_0000015ade536a40;
+- .timescale 0 0;
+-v0000015ade503510_0 .var "expected_grant", 3 0;
+-v0000015ade47c370_0 .var "test_req", 3 0;
+-TD_tb_fixed_arbiter.check_arbiter ;
+-    %load/vec4 v0000015ade47c370_0;
+-    %store/vec4 v0000015ade503090_0, 0, 4;
+-    %delay 1, 0;
+-    %load/vec4 v0000015ade502ff0_0;
+-    %load/vec4 v0000015ade503510_0;
+-    %cmp/ne;
+-    %jmp/0xz  T_0.0, 6;
+-    %vpi_call/w 3 20 "$error", "ERROR:grant mismatch: expected: %b , actual:%b", v0000015ade503510_0, v0000015ade502ff0_0 {0 0 0};
+-    %jmp T_0.1;
+-T_0.0 ;
+-    %vpi_call/w 3 23 "$display", "PASSED" {0 0 0};
+-T_0.1 ;
+-    %end;
+-S_0000015ade47c410 .scope module, "uut" "fixed_priority_arbiter" 3 5, 4 1 0, S_0000015ade536a40;
+- .timescale 0 0;
+-    .port_info 0 /INPUT 4 "req";
+-    .port_info 1 /OUTPUT 4 "grant";
+-v0000015ade502eb0_0 .var "grant", 3 0;
+-v0000015ade502f50_0 .net "req", 3 0, v0000015ade503090_0;  1 drivers
+-E_0000015ade524bf0 .event anyedge, v0000015ade502f50_0, v0000015ade502f50_0, v0000015ade502f50_0, v0000015ade502f50_0;
+-    .scope S_0000015ade47c410;
+-T_1 ;
+-Ewait_0 .event/or E_0000015ade524bf0, E_0x0;
+-    %wait Ewait_0;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000015ade502eb0_0, 0, 4;
+-    %load/vec4 v0000015ade502f50_0;
+-    %parti/s 1, 0, 2;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.0, 8;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000015ade502eb0_0, 0, 4;
+-    %jmp T_1.1;
+-T_1.0 ;
+-    %load/vec4 v0000015ade502f50_0;
+-    %parti/s 1, 1, 2;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.2, 8;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000015ade502eb0_0, 0, 4;
+-    %jmp T_1.3;
+-T_1.2 ;
+-    %load/vec4 v0000015ade502f50_0;
+-    %parti/s 1, 2, 3;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.4, 8;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000015ade502eb0_0, 0, 4;
+-    %jmp T_1.5;
+-T_1.4 ;
+-    %load/vec4 v0000015ade502f50_0;
+-    %parti/s 1, 3, 3;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.6, 8;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000015ade502eb0_0, 0, 4;
+-T_1.6 ;
+-T_1.5 ;
+-T_1.3 ;
+-T_1.1 ;
+-    %jmp T_1;
+-    .thread T_1, $push;
+-    .scope S_0000015ade536a40;
+-T_2 ;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 3, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 5, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 6, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 7, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 9, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 10, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 11, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 12, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 13, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 14, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %alloc S_0000015ade502d20;
+-    %pushi/vec4 15, 0, 4;
+-    %store/vec4 v0000015ade47c370_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000015ade503510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000015ade502d20;
+-    %join;
+-    %free S_0000015ade502d20;
+-    %vpi_call/w 3 49 "$finish" {0 0 0};
+-    %end;
+-    .thread T_2;
+-# The file index is used to find the file name in the following table.
+-:file_names 5;
+-    "N/A";
+-    "<interactive>";
+-    "-";
+-    "tb_fixed_arbiter.sv";
+-    "arbiter.sv";
+diff --git a/arbite_sim b/arbite_sim
+deleted file mode 100644
+index 985cc55..0000000
+--- a/arbite_sim
++++ /dev/null
+@@ -1,223 +0,0 @@
+-#! /c/Source/iverilog-install/bin/vvp
+-:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+-:ivl_delay_selection "TYPICAL";
+-:vpi_time_precision + 0;
+-:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+-S_0000020bc2ae68b0 .scope package, "$unit" "$unit" 2 1;
+- .timescale 0 0;
+-S_0000020bc2ae6a40 .scope module, "tb_fixed_arbiter" "tb_fixed_arbiter" 3 1;
+- .timescale 0 0;
+-v0000020bc2ab2ff0_0 .net "grant", 3 0, v0000020bc2ab2eb0_0;  1 drivers
+-v0000020bc2ab3090_0 .var "req", 3 0;
+-S_0000020bc2ab2d20 .scope autotask, "check_arbiter" "check_arbiter" 3 11, 3 11 0, S_0000020bc2ae6a40;
+- .timescale 0 0;
+-v0000020bc2ab3510_0 .var "expected_grant", 3 0;
+-v0000020bc2a9c390_0 .var "test_req", 3 0;
+-TD_tb_fixed_arbiter.check_arbiter ;
+-    %load/vec4 v0000020bc2a9c390_0;
+-    %store/vec4 v0000020bc2ab3090_0, 0, 4;
+-    %delay 1, 0;
+-    %load/vec4 v0000020bc2ab2ff0_0;
+-    %load/vec4 v0000020bc2ab3510_0;
+-    %cmp/ne;
+-    %jmp/0xz  T_0.0, 6;
+-    %vpi_call/w 3 20 "$error", "ERROR:grant mismatch: expected: %b , actual:%b", v0000020bc2ab3510_0, v0000020bc2ab2ff0_0 {0 0 0};
+-    %jmp T_0.1;
+-T_0.0 ;
+-    %vpi_call/w 3 23 "$display", "PASSED" {0 0 0};
+-T_0.1 ;
+-    %end;
+-S_0000020bc2a9c430 .scope module, "uut" "fixed_priority_arbiter" 3 5, 4 1 0, S_0000020bc2ae6a40;
+- .timescale 0 0;
+-    .port_info 0 /INPUT 4 "req";
+-    .port_info 1 /OUTPUT 4 "grant";
+-v0000020bc2ab2eb0_0 .var "grant", 3 0;
+-v0000020bc2ab2f50_0 .net "req", 3 0, v0000020bc2ab3090_0;  1 drivers
+-E_0000020bc2ad56f0 .event anyedge, v0000020bc2ab2f50_0, v0000020bc2ab2f50_0, v0000020bc2ab2f50_0, v0000020bc2ab2f50_0;
+-    .scope S_0000020bc2a9c430;
+-T_1 ;
+-Ewait_0 .event/or E_0000020bc2ad56f0, E_0x0;
+-    %wait Ewait_0;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000020bc2ab2eb0_0, 0, 4;
+-    %load/vec4 v0000020bc2ab2f50_0;
+-    %parti/s 1, 0, 2;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.0, 8;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000020bc2ab2eb0_0, 0, 4;
+-    %jmp T_1.1;
+-T_1.0 ;
+-    %load/vec4 v0000020bc2ab2f50_0;
+-    %parti/s 1, 1, 2;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.2, 8;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000020bc2ab2eb0_0, 0, 4;
+-    %jmp T_1.3;
+-T_1.2 ;
+-    %load/vec4 v0000020bc2ab2f50_0;
+-    %parti/s 1, 2, 3;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.4, 8;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000020bc2ab2eb0_0, 0, 4;
+-    %jmp T_1.5;
+-T_1.4 ;
+-    %load/vec4 v0000020bc2ab2f50_0;
+-    %parti/s 1, 3, 3;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.6, 8;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000020bc2ab2eb0_0, 0, 4;
+-T_1.6 ;
+-T_1.5 ;
+-T_1.3 ;
+-T_1.1 ;
+-    %jmp T_1;
+-    .thread T_1, $push;
+-    .scope S_0000020bc2ae6a40;
+-T_2 ;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 3, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 5, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 6, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 7, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 9, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 10, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 11, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 12, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 13, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 14, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %alloc S_0000020bc2ab2d20;
+-    %pushi/vec4 15, 0, 4;
+-    %store/vec4 v0000020bc2a9c390_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000020bc2ab3510_0, 0, 4;
+-    %fork TD_tb_fixed_arbiter.check_arbiter, S_0000020bc2ab2d20;
+-    %join;
+-    %free S_0000020bc2ab2d20;
+-    %vpi_call/w 3 49 "$finish" {0 0 0};
+-    %end;
+-    .thread T_2;
+-# The file index is used to find the file name in the following table.
+-:file_names 5;
+-    "N/A";
+-    "<interactive>";
+-    "-";
+-    "tb_fixed_arbiter.sv";
+-    "arbiter.sv";
+diff --git a/b.out b/b.out
+deleted file mode 100644
+index 9a6d88b..0000000
+--- a/b.out
++++ /dev/null
+@@ -1,249 +0,0 @@
+-#! /c/Source/iverilog-install/bin/vvp
+-:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+-:ivl_delay_selection "TYPICAL";
+-:vpi_time_precision - 12;
+-:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+-S_000001f6996792f0 .scope package, "$unit" "$unit" 2 1;
+- .timescale 0 0;
+-S_000001f69968c2e0 .scope module, "tb_cdc" "tb_cdc" 3 3;
+- .timescale -9 -12;
+-v000001f6996de770_0 .var "dst_clk", 0 0;
+-v000001f6996dee50_0 .net "dst_pulse", 0 0, v000001f6995ca9e0_0;  1 drivers
+-v000001f6996de450_0 .var "rst_n", 0 0;
+-v000001f6996de590_0 .net "src_busy", 0 0, v000001f6996dec70_0;  1 drivers
+-v000001f6996ded10_0 .var "src_clk", 0 0;
+-v000001f6996de950_0 .var "src_pulse", 0 0;
+-E_000001f699677360 .event posedge, v000001f6995ca940_0;
+-E_000001f699677a60 .event negedge, v000001f6995ca940_0;
+-E_000001f699677ea0 .event negedge, v000001f6996de270_0;
+-E_000001f699677fa0 .event posedge, v000001f6996de270_0;
+-S_000001f69968c470 .scope module, "uut" "cdc_handshake" 3 11, 4 1 0, S_000001f69968c2e0;
+- .timescale 0 0;
+-    .port_info 0 /INPUT 1 "src_clk";
+-    .port_info 1 /INPUT 1 "dst_clk";
+-    .port_info 2 /INPUT 1 "rst_n";
+-    .port_info 3 /INPUT 1 "src_pulse";
+-    .port_info 4 /OUTPUT 1 "src_busy";
+-    .port_info 5 /OUTPUT 1 "dst_pulse";
+-v000001f6995cc260_0 .var "ack_sync_ff1", 0 0;
+-v000001f699679110_0 .var "ack_sync_ff2", 0 0;
+-v000001f699653120_0 .var "ack_toggle", 0 0;
+-v000001f6995ca940_0 .net "dst_clk", 0 0, v000001f6996de770_0;  1 drivers
+-v000001f6995ca9e0_0 .var "dst_pulse", 0 0;
+-v000001f6995cba90_0 .var "req_sync_d", 0 0;
+-v000001f6995cbb30_0 .var "req_sync_ff1", 0 0;
+-v000001f69968c600_0 .var "req_sync_ff2", 0 0;
+-v000001f6996de4f0_0 .var "req_toggle", 0 0;
+-v000001f6996de310_0 .net "rst_n", 0 0, v000001f6996de450_0;  1 drivers
+-v000001f6996dec70_0 .var "src_busy", 0 0;
+-v000001f6996de270_0 .net "src_clk", 0 0, v000001f6996ded10_0;  1 drivers
+-v000001f6996de3b0_0 .net "src_pulse", 0 0, v000001f6996de950_0;  1 drivers
+-E_000001f699677ca0/0 .event negedge, v000001f6996de310_0;
+-E_000001f699677ca0/1 .event posedge, v000001f6995ca940_0;
+-E_000001f699677ca0 .event/or E_000001f699677ca0/0, E_000001f699677ca0/1;
+-E_000001f6996774e0/0 .event negedge, v000001f6996de310_0;
+-E_000001f6996774e0/1 .event posedge, v000001f6996de270_0;
+-E_000001f6996774e0 .event/or E_000001f6996774e0/0, E_000001f6996774e0/1;
+-E_000001f699677160 .event anyedge, v000001f6996de4f0_0, v000001f699679110_0;
+-    .scope S_000001f69968c470;
+-T_0 ;
+-Ewait_0 .event/or E_000001f699677160, E_0x0;
+-    %wait Ewait_0;
+-    %load/vec4 v000001f6996de4f0_0;
+-    %load/vec4 v000001f699679110_0;
+-    %cmp/ne;
+-    %flag_get/vec4 4;
+-    %store/vec4 v000001f6996dec70_0, 0, 1;
+-    %jmp T_0;
+-    .thread T_0, $push;
+-    .scope S_000001f69968c470;
+-T_1 ;
+-    %wait E_000001f6996774e0;
+-    %load/vec4 v000001f6996de310_0;
+-    %nor/r;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.0, 8;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v000001f6996de4f0_0, 0;
+-    %jmp T_1.1;
+-T_1.0 ;
+-    %load/vec4 v000001f6996de3b0_0;
+-    %flag_set/vec4 9;
+-    %flag_get/vec4 9;
+-    %jmp/0 T_1.4, 9;
+-    %load/vec4 v000001f6996dec70_0;
+-    %nor/r;
+-    %and;
+-T_1.4;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.2, 8;
+-    %load/vec4 v000001f6996de4f0_0;
+-    %inv;
+-    %assign/vec4 v000001f6996de4f0_0, 0;
+-T_1.2 ;
+-T_1.1 ;
+-    %jmp T_1;
+-    .thread T_1;
+-    .scope S_000001f69968c470;
+-T_2 ;
+-    %wait E_000001f699677ca0;
+-    %load/vec4 v000001f6996de310_0;
+-    %nor/r;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_2.0, 8;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v000001f6995cbb30_0, 0;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v000001f69968c600_0, 0;
+-    %jmp T_2.1;
+-T_2.0 ;
+-    %load/vec4 v000001f6996de4f0_0;
+-    %assign/vec4 v000001f6995cbb30_0, 0;
+-    %load/vec4 v000001f6995cbb30_0;
+-    %assign/vec4 v000001f69968c600_0, 0;
+-T_2.1 ;
+-    %jmp T_2;
+-    .thread T_2;
+-    .scope S_000001f69968c470;
+-T_3 ;
+-    %wait E_000001f6996774e0;
+-    %load/vec4 v000001f6996de310_0;
+-    %nor/r;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_3.0, 8;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v000001f6995cc260_0, 0;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v000001f699679110_0, 0;
+-    %jmp T_3.1;
+-T_3.0 ;
+-    %load/vec4 v000001f699653120_0;
+-    %assign/vec4 v000001f6995cc260_0, 0;
+-    %load/vec4 v000001f6995cc260_0;
+-    %assign/vec4 v000001f699679110_0, 0;
+-T_3.1 ;
+-    %jmp T_3;
+-    .thread T_3;
+-    .scope S_000001f69968c470;
+-T_4 ;
+-    %wait E_000001f699677ca0;
+-    %load/vec4 v000001f6996de310_0;
+-    %nor/r;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.0, 8;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v000001f6995cba90_0, 0;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v000001f6995ca9e0_0, 0;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v000001f699653120_0, 0;
+-    %jmp T_4.1;
+-T_4.0 ;
+-    %load/vec4 v000001f69968c600_0;
+-    %assign/vec4 v000001f6995cba90_0, 0;
+-    %load/vec4 v000001f6995cba90_0;
+-    %load/vec4 v000001f69968c600_0;
+-    %xor;
+-    %assign/vec4 v000001f6995ca9e0_0, 0;
+-    %load/vec4 v000001f6995cba90_0;
+-    %load/vec4 v000001f69968c600_0;
+-    %xor;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.2, 8;
+-    %load/vec4 v000001f69968c600_0;
+-    %assign/vec4 v000001f699653120_0, 0;
+-T_4.2 ;
+-T_4.1 ;
+-    %jmp T_4;
+-    .thread T_4;
+-    .scope S_000001f69968c2e0;
+-T_5 ;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v000001f6996ded10_0, 0, 1;
+-T_5.0 ;
+-    %delay 5000, 0;
+-    %load/vec4 v000001f6996ded10_0;
+-    %inv;
+-    %store/vec4 v000001f6996ded10_0, 0, 1;
+-    %jmp T_5.0;
+-    %end;
+-    .thread T_5;
+-    .scope S_000001f69968c2e0;
+-T_6 ;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v000001f6996de770_0, 0, 1;
+-T_6.0 ;
+-    %delay 10000, 0;
+-    %load/vec4 v000001f6996de770_0;
+-    %inv;
+-    %store/vec4 v000001f6996de770_0, 0, 1;
+-    %jmp T_6.0;
+-    %end;
+-    .thread T_6;
+-    .scope S_000001f69968c2e0;
+-T_7 ;
+-    %vpi_call/w 3 33 "$dumpfile", "tb_cdc.vcd" {0 0 0};
+-    %vpi_call/w 3 34 "$dumpvars", 32'sb00000000000000000000000000000000, S_000001f69968c2e0 {0 0 0};
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v000001f6996de450_0, 0, 1;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v000001f6996de950_0, 0, 1;
+-    %pushi/vec4 2, 0, 32;
+-T_7.0 %dup/vec4;
+-    %pushi/vec4 0, 0, 32;
+-    %cmp/s;
+-    %jmp/1xz T_7.1, 5;
+-    %jmp/1 T_7.1, 4;
+-    %pushi/vec4 1, 0, 32;
+-    %sub;
+-    %wait E_000001f699677fa0;
+-    %jmp T_7.0;
+-T_7.1 ;
+-    %pop/vec4 1;
+-    %wait E_000001f699677ea0;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v000001f6996de450_0, 0, 1;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v000001f6996de950_0, 0, 1;
+-    %wait E_000001f699677fa0;
+-    %wait E_000001f699677ea0;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v000001f6996de950_0, 0, 1;
+-    %pushi/vec4 2, 0, 32;
+-T_7.2 %dup/vec4;
+-    %pushi/vec4 0, 0, 32;
+-    %cmp/s;
+-    %jmp/1xz T_7.3, 5;
+-    %jmp/1 T_7.3, 4;
+-    %pushi/vec4 1, 0, 32;
+-    %sub;
+-    %wait E_000001f699677360;
+-    %jmp T_7.2;
+-T_7.3 ;
+-    %pop/vec4 1;
+-    %wait E_000001f699677a60;
+-    %wait E_000001f699677360;
+-    %delay 1000, 0;
+-    %load/vec4 v000001f6996dee50_0;
+-    %cmpi/ne 0, 0, 1;
+-    %jmp/0xz  T_7.4, 6;
+-    %vpi_call/w 3 55 "$error", "dst_pulse should be low" {0 0 0};
+-    %jmp T_7.5;
+-T_7.4 ;
+-    %vpi_call/w 3 57 "$display", "dst_pulse correct" {0 0 0};
+-T_7.5 ;
+-    %vpi_call/w 3 60 "$finish" {0 0 0};
+-    %end;
+-    .thread T_7;
+-# The file index is used to find the file name in the following table.
+-:file_names 5;
+-    "N/A";
+-    "<interactive>";
+-    "-";
+-    "tb_cdc.sv";
+-    "cdc.sv";
+diff --git a/counter.vcd b/counter.vcd
+deleted file mode 100644
+index fd5af99..0000000
+--- a/counter.vcd
++++ /dev/null
+@@ -1,170 +0,0 @@
+-$date
+-  Mon Jul 20 03:33:34 2026
+-$end
+-$version
+-  GHDL v0
+-$end
+-$timescale
+-  1 fs
+-$end
+-$scope module standard $end
+-$upscope $end
+-$scope module textio $end
+-$upscope $end
+-$scope module std_logic_1164 $end
+-$upscope $end
+-$scope module numeric_std $end
+-$upscope $end
+-$scope module env $end
+-$upscope $end
+-$scope module tb_programmable_counter $end
+-$var reg 1 ! clk $end
+-$var reg 1 " rst_n $end
+-$var reg 1 # enable $end
+-$var reg 1 $ load $end
+-$var reg 8 % load_value[7:0] $end
+-$var reg 8 & limit_value[7:0] $end
+-$var reg 8 ' count[7:0] $end
+-$var reg 1 ( limit_pulse $end
+-$scope module uut $end
+-$var reg 1 ) clk $end
+-$var reg 1 * rst_n $end
+-$var reg 1 + enable $end
+-$var reg 1 , load $end
+-$var reg 8 - load_value[7:0] $end
+-$var reg 8 . limit_value[7:0] $end
+-$var reg 8 / count[7:0] $end
+-$var reg 1 0 limit_pulse $end
+-$var reg 8 1 counter_reg[7:0] $end
+-$var reg 1 2 limit_reached $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-#0
+-0!
+-1"
+-0#
+-0$
+-b00000000 %
+-b00000000 &
+-b00000000 '
+-0(
+-0)
+-1*
+-0+
+-0,
+-b00000000 -
+-b00000000 .
+-b00000000 /
+-00
+-b00000000 1
+-02
+-#1000000
+-0"
+-0*
+-#2000000
+-b00000010 %
+-b00000100 &
+-b00000010 -
+-b00000100 .
+-#5000000
+-1!
+-1)
+-#10000000
+-0!
+-1"
+-1$
+-0)
+-1*
+-1,
+-#15000000
+-1!
+-b00000010 '
+-1)
+-b00000010 /
+-b00000010 1
+-#16000000
+-1#
+-0$
+-1+
+-0,
+-#20000000
+-0!
+-0)
+-#25000000
+-1!
+-b00000011 '
+-1)
+-b00000011 /
+-b00000011 1
+-#30000000
+-0!
+-0)
+-#35000000
+-1!
+-b00000100 '
+-1)
+-b00000100 /
+-b00000100 1
+-#40000000
+-0!
+-0)
+-#45000000
+-1!
+-b00000000 '
+-1(
+-1)
+-b00000000 /
+-10
+-b00000000 1
+-12
+-#50000000
+-0!
+-0)
+-#55000000
+-1!
+-b00000001 '
+-0(
+-1)
+-b00000001 /
+-00
+-b00000001 1
+-02
+-#56000000
+-0#
+-0+
+-#60000000
+-0!
+-0)
+-#65000000
+-1!
+-1)
+-#66000000
+-1#
+-1$
+-b00000011 %
+-1+
+-1,
+-b00000011 -
+-#70000000
+-0!
+-0)
+-#75000000
+-1!
+-b00000011 '
+-1)
+-b00000011 /
+-b00000011 1
+-#76000000
+-0$
+-0,
+-#80000000
+-0!
+-0)
+-#85000000
+-1!
+-b00000100 '
+-1)
+-b00000100 /
+-b00000100 1
+-#86000000
+diff --git a/arbiter.sv b/examples/arbiters/fixed_priority/arbiter.sv
+similarity index 100%
+rename from arbiter.sv
+rename to examples/arbiters/fixed_priority/arbiter.sv
+diff --git a/tb_fixed_arbiter.sv b/examples/arbiters/fixed_priority/tb_fixed_arbiter.sv
+similarity index 100%
+rename from tb_fixed_arbiter.sv
+rename to examples/arbiters/fixed_priority/tb_fixed_arbiter.sv
+diff --git a/roundrobin.sv b/examples/arbiters/round_robin/roundrobin.sv
+similarity index 100%
+rename from roundrobin.sv
+rename to examples/arbiters/round_robin/roundrobin.sv
+diff --git a/tb_roundrobin.sv b/examples/arbiters/round_robin/tb_roundrobin.sv
+similarity index 100%
+rename from tb_roundrobin.sv
+rename to examples/arbiters/round_robin/tb_roundrobin.sv
+diff --git a/cdc.sv b/examples/cdc/handshake/cdc.sv
+similarity index 100%
+rename from cdc.sv
+rename to examples/cdc/handshake/cdc.sv
+diff --git a/tb_cdc.sv b/examples/cdc/handshake/tb_cdc.sv
+similarity index 100%
+rename from tb_cdc.sv
+rename to examples/cdc/handshake/tb_cdc.sv
+diff --git a/multi_cdc.sv b/examples/cdc/multi_bit/multi_cdc.sv
+similarity index 100%
+rename from multi_cdc.sv
+rename to examples/cdc/multi_bit/multi_cdc.sv
+diff --git a/tb_multi_cdc.sv b/examples/cdc/multi_bit/tb_multi_cdc.sv
+similarity index 91%
+rename from tb_multi_cdc.sv
+rename to examples/cdc/multi_bit/tb_multi_cdc.sv
+index 2f12f2e..8efa9c1 100644
+--- a/tb_multi_cdc.sv
++++ b/examples/cdc/multi_bit/tb_multi_cdc.sv
+@@ -35,7 +35,7 @@ task automatic send_while_busy(input logic [7:0] value);
+     @(negedge src_clk);
+ 
+     if(src_busy !== 1'b1)begin
+-        $fatal("Fail: src_busy must be 1");
++        $fatal(1, "Fail: src_busy must be 1");
+     end 
+     else begin
+             
+diff --git a/pulse_sync.sv b/examples/cdc/pulse/pulse_sync.sv
+similarity index 100%
+rename from pulse_sync.sv
+rename to examples/cdc/pulse/pulse_sync.sv
+diff --git a/tb_pulse_sync.sv b/examples/cdc/pulse/tb_pulse_sync.sv
+similarity index 100%
+rename from tb_pulse_sync.sv
+rename to examples/cdc/pulse/tb_pulse_sync.sv
+diff --git a/reset_synchronizer.sv b/examples/cdc/reset/reset_synchronizer.sv
+similarity index 100%
+rename from reset_synchronizer.sv
+rename to examples/cdc/reset/reset_synchronizer.sv
+diff --git a/tb_reset_sync.sv b/examples/cdc/reset/tb_reset_sync.sv
+similarity index 87%
+rename from tb_reset_sync.sv
+rename to examples/cdc/reset/tb_reset_sync.sv
+index 848cd35..09e9b88 100644
+--- a/tb_reset_sync.sv
++++ b/examples/cdc/reset/tb_reset_sync.sv
+@@ -1,3 +1,5 @@
++`timescale 1ns/1ps
++
+ module tb_reset_sync;
+ logic clk;
+ logic async_rst_n;
+@@ -21,6 +23,7 @@ initial begin
+     async_rst_n = 1'b1;
+     @(posedge clk);
+     async_rst_n = 1'b0;
++    #1; // Allow the nonblocking reset assignments to settle.
+ 
+     if (sync_rst_n !== 1'b0) begin
+         $error("sync_rst_n should be 0");
+diff --git a/2_ff.sv b/examples/cdc/two_ff/2_ff.sv
+similarity index 100%
+rename from 2_ff.sv
+rename to examples/cdc/two_ff/2_ff.sv
+diff --git a/two_ff_tb.sv b/examples/cdc/two_ff/two_ff_tb.sv
+similarity index 100%
+rename from two_ff_tb.sv
+rename to examples/cdc/two_ff/two_ff_tb.sv
+diff --git a/programmable_counter.sv b/examples/counters/systemverilog/programmable_counter.sv
+similarity index 100%
+rename from programmable_counter.sv
+rename to examples/counters/systemverilog/programmable_counter.sv
+diff --git a/tb_counter.sv b/examples/counters/systemverilog/tb_counter.sv
+similarity index 100%
+rename from tb_counter.sv
+rename to examples/counters/systemverilog/tb_counter.sv
+diff --git a/programmable_counter.v b/examples/counters/verilog/programmable_counter.v
+similarity index 100%
+rename from programmable_counter.v
+rename to examples/counters/verilog/programmable_counter.v
+diff --git a/testbench.v b/examples/counters/verilog/testbench.v
+similarity index 100%
+rename from testbench.v
+rename to examples/counters/verilog/testbench.v
+diff --git a/programmable_counter.vhd b/examples/counters/vhdl/programmable_counter.vhd
+similarity index 100%
+rename from programmable_counter.vhd
+rename to examples/counters/vhdl/programmable_counter.vhd
+diff --git a/tb_counter_vhdl.vhd b/examples/counters/vhdl/tb_counter_vhdl.vhd
+similarity index 100%
+rename from tb_counter_vhdl.vhd
+rename to examples/counters/vhdl/tb_counter_vhdl.vhd
+diff --git a/async_fifo.sv b/examples/fifo/asynchronous/async_fifo.sv
+similarity index 100%
+rename from async_fifo.sv
+rename to examples/fifo/asynchronous/async_fifo.sv
+diff --git a/sync_fifo.sv b/examples/fifo/synchronous/sync_fifo.sv
+similarity index 100%
+rename from sync_fifo.sv
+rename to examples/fifo/synchronous/sync_fifo.sv
+diff --git a/tb_fifo.sv b/examples/fifo/synchronous/tb_fifo.sv
+similarity index 100%
+rename from tb_fifo.sv
+rename to examples/fifo/synchronous/tb_fifo.sv
+diff --git a/FSM.sv b/examples/fsm/systemverilog/FSM.sv
+similarity index 100%
+rename from FSM.sv
+rename to examples/fsm/systemverilog/FSM.sv
+diff --git a/FSM_tb.sv b/examples/fsm/systemverilog/FSM_tb.sv
+similarity index 100%
+rename from FSM_tb.sv
+rename to examples/fsm/systemverilog/FSM_tb.sv
+diff --git a/fsmverilog.v b/examples/fsm/verilog/fsmverilog.v
+similarity index 100%
+rename from fsmverilog.v
+rename to examples/fsm/verilog/fsmverilog.v
+diff --git a/tb_fsmverilog.v b/examples/fsm/verilog/tb_fsmverilog.v
+similarity index 100%
+rename from tb_fsmverilog.v
+rename to examples/fsm/verilog/tb_fsmverilog.v
+diff --git a/FSMvhdl.vhd b/examples/fsm/vhdl/FSMvhdl.vhd
+similarity index 100%
+rename from FSMvhdl.vhd
+rename to examples/fsm/vhdl/FSMvhdl.vhd
+diff --git a/prac_tb.vhd b/examples/fsm/vhdl/prac_tb.vhd
+similarity index 100%
+rename from prac_tb.vhd
+rename to examples/fsm/vhdl/prac_tb.vhd
+diff --git a/tb_fsmvhdl.vhd b/examples/fsm/vhdl/tb_fsmvhdl.vhd
+similarity index 100%
+rename from tb_fsmvhdl.vhd
+rename to examples/fsm/vhdl/tb_fsmvhdl.vhd
+diff --git a/tb_handshake.sv b/examples/handshake/tb_handshake.sv
+similarity index 100%
+rename from tb_handshake.sv
+rename to examples/handshake/tb_handshake.sv
+diff --git a/valid_handshake.sv b/examples/handshake/valid_handshake.sv
+similarity index 100%
+rename from valid_handshake.sv
+rename to examples/handshake/valid_handshake.sv
+diff --git a/tb_uart_rx.sv b/examples/uart/rx/tb_uart_rx.sv
+similarity index 100%
+rename from tb_uart_rx.sv
+rename to examples/uart/rx/tb_uart_rx.sv
+diff --git a/uart_rx.sv b/examples/uart/rx/uart_rx.sv
+similarity index 100%
+rename from uart_rx.sv
+rename to examples/uart/rx/uart_rx.sv
+diff --git a/tb_uart.sv b/examples/uart/tx/tb_uart.sv
+similarity index 100%
+rename from tb_uart.sv
+rename to examples/uart/tx/tb_uart.sv
+diff --git a/uart_transmitter.sv b/examples/uart/tx/uart_transmitter.sv
+similarity index 100%
+rename from uart_transmitter.sv
+rename to examples/uart/tx/uart_transmitter.sv
+diff --git a/handshake.out b/handshake.out
+deleted file mode 100644
+index 53d590a..0000000
+--- a/handshake.out
++++ /dev/null
+@@ -1,245 +0,0 @@
+-#! /c/Source/iverilog-install/bin/vvp
+-:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+-:ivl_delay_selection "TYPICAL";
+-:vpi_time_precision - 12;
+-:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+-S_0000013749ea7050 .scope package, "$unit" "$unit" 2 1;
+- .timescale 0 0;
+-S_0000013749ea9310 .scope module, "tb_handshake" "tb_handshake" 3 3;
+- .timescale -9 -12;
+-v0000013749f11060_0 .var "clk", 0 0;
+-v0000013749f10c00_0 .var "in_data", 7 0;
+-v0000013749f11240_0 .net "in_ready", 0 0, v0000013749ea94a0_0;  1 drivers
+-v0000013749f10e80_0 .var "in_valid", 0 0;
+-v0000013749f10ac0_0 .net "out_data", 7 0, v0000013749eacfe0_0;  1 drivers
+-v0000013749f10ca0_0 .var "out_ready", 0 0;
+-v0000013749f117e0_0 .net "out_valid", 0 0, v0000013749ead120_0;  1 drivers
+-v0000013749f111a0_0 .var "rst_n", 0 0;
+-E_0000013749eaabe0 .event negedge, v0000013749ea9090_0;
+-E_0000013749eab320 .event posedge, v0000013749ea9090_0;
+-S_0000013749eacdb0 .scope module, "uut" "valid_handshake" 3 14, 4 1 0, S_0000013749ea9310;
+- .timescale 0 0;
+-    .port_info 0 /INPUT 1 "clk";
+-    .port_info 1 /INPUT 1 "rst_n";
+-    .port_info 2 /INPUT 1 "in_valid";
+-    .port_info 3 /INPUT 8 "in_data";
+-    .port_info 4 /INPUT 1 "out_ready";
+-    .port_info 5 /OUTPUT 1 "in_ready";
+-    .port_info 6 /OUTPUT 1 "out_valid";
+-    .port_info 7 /OUTPUT 8 "out_data";
+-L_0000013749ea4bf0 .functor AND 1, v0000013749f10e80_0, v0000013749ea94a0_0, C4<1>, C4<1>;
+-L_0000013749ea5590 .functor AND 1, v0000013749ead120_0, v0000013749f10ca0_0, C4<1>, C4<1>;
+-v0000013749ea9090_0 .net "clk", 0 0, v0000013749f11060_0;  1 drivers
+-v0000013749ea91d0_0 .var "data_reg", 7 0;
+-v0000013749e83410_0 .var "full_reg", 0 0;
+-v0000013749e6c580_0 .net "in_data", 7 0, v0000013749f10c00_0;  1 drivers
+-v0000013749ea94a0_0 .var "in_ready", 0 0;
+-v0000013749eacf40_0 .net "in_valid", 0 0, v0000013749f10e80_0;  1 drivers
+-v0000013749eacfe0_0 .var "out_data", 7 0;
+-v0000013749ead080_0 .net "out_ready", 0 0, v0000013749f10ca0_0;  1 drivers
+-v0000013749ead120_0 .var "out_valid", 0 0;
+-v0000013749e82d20_0 .net "pop", 0 0, L_0000013749ea5590;  1 drivers
+-v0000013749f11600_0 .net "push", 0 0, L_0000013749ea4bf0;  1 drivers
+-v0000013749f11560_0 .net "rst_n", 0 0, v0000013749f111a0_0;  1 drivers
+-E_0000013749eaa920/0 .event negedge, v0000013749f11560_0;
+-E_0000013749eaa920/1 .event posedge, v0000013749ea9090_0;
+-E_0000013749eaa920 .event/or E_0000013749eaa920/0, E_0000013749eaa920/1;
+-E_0000013749eaad20 .event anyedge, v0000013749ea91d0_0, v0000013749e83410_0, v0000013749ead080_0;
+-    .scope S_0000013749eacdb0;
+-T_0 ;
+-Ewait_0 .event/or E_0000013749eaad20, E_0x0;
+-    %wait Ewait_0;
+-    %load/vec4 v0000013749ea91d0_0;
+-    %store/vec4 v0000013749eacfe0_0, 0, 8;
+-    %load/vec4 v0000013749e83410_0;
+-    %store/vec4 v0000013749ead120_0, 0, 1;
+-    %load/vec4 v0000013749e83410_0;
+-    %nor/r;
+-    %flag_set/vec4 8;
+-    %flag_get/vec4 8;
+-    %jmp/1 T_0.0, 8;
+-    %load/vec4 v0000013749ead080_0;
+-    %or;
+-T_0.0;
+-    %store/vec4 v0000013749ea94a0_0, 0, 1;
+-    %jmp T_0;
+-    .thread T_0, $push;
+-    .scope S_0000013749eacdb0;
+-T_1 ;
+-    %wait E_0000013749eaa920;
+-    %load/vec4 v0000013749f11560_0;
+-    %nor/r;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.0, 8;
+-    %pushi/vec4 0, 0, 8;
+-    %assign/vec4 v0000013749ea91d0_0, 0;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v0000013749e83410_0, 0;
+-    %jmp T_1.1;
+-T_1.0 ;
+-    %load/vec4 v0000013749f11600_0;
+-    %cmpi/e 1, 0, 1;
+-    %flag_get/vec4 4;
+-    %jmp/0 T_1.4, 4;
+-    %load/vec4 v0000013749e82d20_0;
+-    %pushi/vec4 0, 0, 1;
+-    %cmp/e;
+-    %flag_get/vec4 4;
+-    %and;
+-T_1.4;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.2, 8;
+-    %load/vec4 v0000013749e6c580_0;
+-    %assign/vec4 v0000013749ea91d0_0, 0;
+-    %pushi/vec4 1, 0, 1;
+-    %assign/vec4 v0000013749e83410_0, 0;
+-    %jmp T_1.3;
+-T_1.2 ;
+-    %load/vec4 v0000013749f11600_0;
+-    %cmpi/e 0, 0, 1;
+-    %flag_get/vec4 4;
+-    %jmp/0 T_1.7, 4;
+-    %load/vec4 v0000013749e82d20_0;
+-    %pushi/vec4 1, 0, 1;
+-    %cmp/e;
+-    %flag_get/vec4 4;
+-    %and;
+-T_1.7;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.5, 8;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v0000013749e83410_0, 0;
+-    %jmp T_1.6;
+-T_1.5 ;
+-    %load/vec4 v0000013749f11600_0;
+-    %cmpi/e 1, 0, 1;
+-    %flag_get/vec4 4;
+-    %jmp/0 T_1.10, 4;
+-    %load/vec4 v0000013749e82d20_0;
+-    %pushi/vec4 1, 0, 1;
+-    %cmp/e;
+-    %flag_get/vec4 4;
+-    %and;
+-T_1.10;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.8, 8;
+-    %load/vec4 v0000013749e6c580_0;
+-    %assign/vec4 v0000013749ea91d0_0, 0;
+-    %pushi/vec4 1, 0, 1;
+-    %assign/vec4 v0000013749e83410_0, 0;
+-T_1.8 ;
+-T_1.6 ;
+-T_1.3 ;
+-T_1.1 ;
+-    %jmp T_1;
+-    .thread T_1;
+-    .scope S_0000013749ea9310;
+-T_2 ;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000013749f11060_0, 0, 1;
+-T_2.0 ;
+-    %delay 5000, 0;
+-    %load/vec4 v0000013749f11060_0;
+-    %inv;
+-    %store/vec4 v0000013749f11060_0, 0, 1;
+-    %jmp T_2.0;
+-    %end;
+-    .thread T_2;
+-    .scope S_0000013749ea9310;
+-T_3 ;
+-    %vpi_call/w 3 36 "$dumpfile", "tb_handshake.vcd" {0 0 0};
+-    %vpi_call/w 3 37 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000013749ea9310 {0 0 0};
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000013749f111a0_0, 0, 1;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000013749f10e80_0, 0, 1;
+-    %pushi/vec4 0, 0, 8;
+-    %store/vec4 v0000013749f10c00_0, 0, 8;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000013749f10ca0_0, 0, 1;
+-    %pushi/vec4 2, 0, 32;
+-T_3.0 %dup/vec4;
+-    %pushi/vec4 0, 0, 32;
+-    %cmp/s;
+-    %jmp/1xz T_3.1, 5;
+-    %jmp/1 T_3.1, 4;
+-    %pushi/vec4 1, 0, 32;
+-    %sub;
+-    %wait E_0000013749eab320;
+-    %jmp T_3.0;
+-T_3.1 ;
+-    %pop/vec4 1;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v0000013749f111a0_0, 0, 1;
+-    %wait E_0000013749eaabe0;
+-    %load/vec4 v0000013749f117e0_0;
+-    %cmpi/ne 0, 0, 1;
+-    %jmp/0xz  T_3.2, 6;
+-    %vpi_call/w 3 47 "$error", "Error: out_valid should be 0 after reset" {0 0 0};
+-T_3.2 ;
+-    %load/vec4 v0000013749f11240_0;
+-    %cmpi/ne 1, 0, 1;
+-    %jmp/0xz  T_3.4, 6;
+-    %vpi_call/w 3 50 "$error", "Error: in_ready should be 1 after reset" {0 0 0};
+-T_3.4 ;
+-    %wait E_0000013749eaabe0;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v0000013749f10e80_0, 0, 1;
+-    %pushi/vec4 25, 0, 8;
+-    %store/vec4 v0000013749f10c00_0, 0, 8;
+-    %wait E_0000013749eab320;
+-    %wait E_0000013749eaabe0;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000013749f10e80_0, 0, 1;
+-    %load/vec4 v0000013749f117e0_0;
+-    %cmpi/ne 1, 0, 1;
+-    %jmp/0xz  T_3.6, 6;
+-    %vpi_call/w 3 63 "$error", "Error: out_valid should be 1 after push" {0 0 0};
+-T_3.6 ;
+-    %load/vec4 v0000013749f10ac0_0;
+-    %cmpi/ne 25, 0, 8;
+-    %jmp/0xz  T_3.8, 6;
+-    %vpi_call/w 3 67 "$error", "Error: out_data should be 25 after push" {0 0 0};
+-T_3.8 ;
+-    %load/vec4 v0000013749f11240_0;
+-    %cmpi/ne 0, 0, 1;
+-    %jmp/0xz  T_3.10, 6;
+-    %vpi_call/w 3 71 "$error", "Error: in_ready should be 0 while buffer is full and out_ready is 0" {0 0 0};
+-T_3.10 ;
+-    %wait E_0000013749eaabe0;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v0000013749f10ca0_0, 0, 1;
+-    %wait E_0000013749eab320;
+-    %wait E_0000013749eaabe0;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000013749f10ca0_0, 0, 1;
+-    %load/vec4 v0000013749f117e0_0;
+-    %cmpi/ne 0, 0, 1;
+-    %jmp/0xz  T_3.12, 6;
+-    %vpi_call/w 3 81 "$error", "Error: out_valid should be 0 after pop" {0 0 0};
+-T_3.12 ;
+-    %load/vec4 v0000013749f11240_0;
+-    %cmpi/ne 1, 0, 1;
+-    %jmp/0xz  T_3.14, 6;
+-    %vpi_call/w 3 85 "$error", "Error: in_ready should be 1 after pop" {0 0 0};
+-T_3.14 ;
+-    %wait E_0000013749eaabe0;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v0000013749f10e80_0, 0, 1;
+-    %pushi/vec4 50, 0, 8;
+-    %store/vec4 v0000013749f10c00_0, 0, 8;
+-    %vpi_call/w 3 93 "$finish" {0 0 0};
+-    %end;
+-    .thread T_3;
+-# The file index is used to find the file name in the following table.
+-:file_names 5;
+-    "N/A";
+-    "<interactive>";
+-    "-";
+-    "tb_handshake.sv";
+-    "valid_handshake.sv";
+diff --git a/programmable_counter.vhd.bak b/programmable_counter.vhd.bak
+deleted file mode 100644
+index dd60e85..0000000
+--- a/programmable_counter.vhd.bak
++++ /dev/null
+@@ -1,50 +0,0 @@
+-library ieee;
+-use ieee.std_logic_1164.all;
+-use ieee.numeric_std.all;
+-
+-entity programmable_counter is
+-    generic (
+-        N : integer := 8  -- Width of the counter
+-    );
+-    port (
+-        clk     : in  std_logic;          -- Clock input
+-        rst_n   : in  std_logic;          -- Asynchronous reset input
+-        enable  : in  std_logic;          -- Enable input
+-        load    : in  std_logic;          -- Load input
+-        load_value : in  std_logic_vector(N-1 downto 0); -- Value to load into the counter
+-        limit_value : in  std_logic_vector(N-1 downto 0); -- Limit value for the counter
+-        count   : out std_logic_vector(N-1 downto 0);  -- Counter output
+-        limit_pulse : out std_logic          -- Limit pulse output
+-    );
+-end entity programmable_counter;
+-
+-architecture rtl of programmable_counter is
+-    signal counter_reg : std_logic_vector(N-1 downto 0) := (others => '0');
+-    signal limit_reached : std_logic := '0';
+-    begin
+-        count <= counter_reg;
+-        limit_pulse <= limit_reached;
+-        process(clk, rst_n)
+-        begin
+-            if rst_n = '0' then
+-                counter_reg <= (others => '0');
+-                limit_reached <= '0';
+-            elsif rising_edge(clk) then 
+-                limit_reached <= '0';
+-
+-                if load = '1' then
+-                    counter_reg <= load_value;
+-
+-                elsif enable ='1' then
+-                    if (counter_reg = limit_value) then
+-                        counter_reg <= (others => '0');
+-                        limit_reached <='1';
+-                    else
+-                        counter_reg <= std_logic_vector(unsigned (counter_reg)+1);
+-                        limit_reached <= '0';
+-
+-    end if;
+-    end if;
+-    end if;
+-    end process;
+-end architecture rtl;
+diff --git a/pulse.out b/pulse.out
+deleted file mode 100644
+index ba96d09..0000000
+--- a/pulse.out
++++ /dev/null
+@@ -1,205 +0,0 @@
+-#! /c/Source/iverilog-install/bin/vvp
+-:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+-:ivl_delay_selection "TYPICAL";
+-:vpi_time_precision - 12;
+-:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+-S_0000021126cf6840 .scope package, "$unit" "$unit" 2 1;
+- .timescale 0 0;
+-S_0000021126ade5b0 .scope module, "tb_pulse" "tb_pulse" 3 3;
+- .timescale -9 -12;
+-v0000021126d03950_0 .var "dst_clk", 0 0;
+-v0000021126d03b30_0 .var/i "pulse_count", 31 0;
+-v0000021126d040d0_0 .var "pulse_in", 0 0;
+-v0000021126d03f90_0 .net "pulse_out", 0 0, L_0000021126cf7cb0;  1 drivers
+-v0000021126d04210_0 .var "rst_n", 0 0;
+-v0000021126d039f0_0 .var "src_clk", 0 0;
+-E_0000021126ad9480 .event negedge, v0000021126adbd70_0;
+-E_0000021126ad9900 .event posedge, v0000021126adbd70_0;
+-E_0000021126ad9bc0 .event negedge, v0000021126adb9b0_0;
+-E_0000021126ad91c0 .event posedge, v0000021126adb9b0_0;
+-S_0000021126ade740 .scope module, "uut" "pulse_sync" 3 13, 4 1 0, S_0000021126ade5b0;
+- .timescale 0 0;
+-    .port_info 0 /INPUT 1 "src_clk";
+-    .port_info 1 /INPUT 1 "dst_clk";
+-    .port_info 2 /INPUT 1 "rst_n";
+-    .port_info 3 /INPUT 1 "pulse_in";
+-    .port_info 4 /OUTPUT 1 "pulse_out";
+-L_0000021126cf7cb0 .functor XOR 1, v0000021126cf8020_0, v0000021126d03c70_0, C4<0>, C4<0>;
+-v0000021126adbd70_0 .net "dst_clk", 0 0, v0000021126d03950_0;  1 drivers
+-v0000021126cd3120_0 .net "pulse_in", 0 0, v0000021126d040d0_0;  1 drivers
+-v0000021126adbaf0_0 .net "pulse_out", 0 0, L_0000021126cf7cb0;  alias, 1 drivers
+-v0000021126adb910_0 .net "rst_n", 0 0, v0000021126d04210_0;  1 drivers
+-v0000021126adb9b0_0 .net "src_clk", 0 0, v0000021126d039f0_0;  1 drivers
+-v0000021126ade8d0_0 .var "src_toggle", 0 0;
+-v0000021126ade970_0 .var "sync_ff1", 0 0;
+-v0000021126cf8020_0 .var "sync_ff2", 0 0;
+-v0000021126d03c70_0 .var "sync_ff2_d", 0 0;
+-E_0000021126ad94c0/0 .event negedge, v0000021126adb910_0;
+-E_0000021126ad94c0/1 .event posedge, v0000021126adbd70_0;
+-E_0000021126ad94c0 .event/or E_0000021126ad94c0/0, E_0000021126ad94c0/1;
+-E_0000021126ad9840/0 .event negedge, v0000021126adb910_0;
+-E_0000021126ad9840/1 .event posedge, v0000021126adb9b0_0;
+-E_0000021126ad9840 .event/or E_0000021126ad9840/0, E_0000021126ad9840/1;
+-    .scope S_0000021126ade740;
+-T_0 ;
+-    %wait E_0000021126ad9840;
+-    %load/vec4 v0000021126adb910_0;
+-    %nor/r;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_0.0, 8;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v0000021126ade8d0_0, 0;
+-    %jmp T_0.1;
+-T_0.0 ;
+-    %load/vec4 v0000021126cd3120_0;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_0.2, 8;
+-    %load/vec4 v0000021126ade8d0_0;
+-    %inv;
+-    %assign/vec4 v0000021126ade8d0_0, 0;
+-T_0.2 ;
+-T_0.1 ;
+-    %jmp T_0;
+-    .thread T_0;
+-    .scope S_0000021126ade740;
+-T_1 ;
+-    %wait E_0000021126ad94c0;
+-    %load/vec4 v0000021126adb910_0;
+-    %nor/r;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.0, 8;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v0000021126ade970_0, 0;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v0000021126cf8020_0, 0;
+-    %pushi/vec4 0, 0, 1;
+-    %assign/vec4 v0000021126d03c70_0, 0;
+-    %jmp T_1.1;
+-T_1.0 ;
+-    %load/vec4 v0000021126ade8d0_0;
+-    %assign/vec4 v0000021126ade970_0, 0;
+-    %load/vec4 v0000021126ade970_0;
+-    %assign/vec4 v0000021126cf8020_0, 0;
+-    %load/vec4 v0000021126cf8020_0;
+-    %assign/vec4 v0000021126d03c70_0, 0;
+-T_1.1 ;
+-    %jmp T_1;
+-    .thread T_1;
+-    .scope S_0000021126ade5b0;
+-T_2 ;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000021126d039f0_0, 0, 1;
+-T_2.0 ;
+-    %delay 5000, 0;
+-    %load/vec4 v0000021126d039f0_0;
+-    %inv;
+-    %store/vec4 v0000021126d039f0_0, 0, 1;
+-    %jmp T_2.0;
+-    %end;
+-    .thread T_2;
+-    .scope S_0000021126ade5b0;
+-T_3 ;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000021126d03950_0, 0, 1;
+-T_3.0 ;
+-    %delay 25000, 0;
+-    %load/vec4 v0000021126d03950_0;
+-    %inv;
+-    %store/vec4 v0000021126d03950_0, 0, 1;
+-    %jmp T_3.0;
+-    %end;
+-    .thread T_3;
+-    .scope S_0000021126ade5b0;
+-T_4 ;
+-    %wait E_0000021126ad94c0;
+-    %load/vec4 v0000021126d04210_0;
+-    %nor/r;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.0, 8;
+-    %pushi/vec4 0, 0, 32;
+-    %assign/vec4 v0000021126d03b30_0, 0;
+-    %jmp T_4.1;
+-T_4.0 ;
+-    %load/vec4 v0000021126d03f90_0;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.2, 8;
+-    %load/vec4 v0000021126d03b30_0;
+-    %addi 1, 0, 32;
+-    %assign/vec4 v0000021126d03b30_0, 0;
+-T_4.2 ;
+-T_4.1 ;
+-    %jmp T_4;
+-    .thread T_4;
+-    .scope S_0000021126ade5b0;
+-T_5 ;
+-    %vpi_call/w 3 41 "$dumpfile", "tb_pulse.vcd" {0 0 0};
+-    %vpi_call/w 3 42 "$dumpvars", 32'sb00000000000000000000000000000000, S_0000021126ade5b0 {0 0 0};
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000021126d04210_0, 0, 1;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000021126d040d0_0, 0, 1;
+-    %pushi/vec4 2, 0, 32;
+-T_5.0 %dup/vec4;
+-    %pushi/vec4 0, 0, 32;
+-    %cmp/s;
+-    %jmp/1xz T_5.1, 5;
+-    %jmp/1 T_5.1, 4;
+-    %pushi/vec4 1, 0, 32;
+-    %sub;
+-    %wait E_0000021126ad91c0;
+-    %jmp T_5.0;
+-T_5.1 ;
+-    %pop/vec4 1;
+-    %wait E_0000021126ad9bc0;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v0000021126d04210_0, 0, 1;
+-    %wait E_0000021126ad9900;
+-    %wait E_0000021126ad9bc0;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v0000021126d040d0_0, 0, 1;
+-    %wait E_0000021126ad9bc0;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000021126d040d0_0, 0, 1;
+-    %wait E_0000021126ad9bc0;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v0000021126d040d0_0, 0, 1;
+-    %wait E_0000021126ad9bc0;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000021126d040d0_0, 0, 1;
+-    %pushi/vec4 5, 0, 32;
+-T_5.2 %dup/vec4;
+-    %pushi/vec4 0, 0, 32;
+-    %cmp/s;
+-    %jmp/1xz T_5.3, 5;
+-    %jmp/1 T_5.3, 4;
+-    %pushi/vec4 1, 0, 32;
+-    %sub;
+-    %wait E_0000021126ad9900;
+-    %jmp T_5.2;
+-T_5.3 ;
+-    %pop/vec4 1;
+-    %wait E_0000021126ad9480;
+-    %vpi_call/w 3 75 "$display", "Sent 2 fast pulses, received %0d pulses", v0000021126d03b30_0 {0 0 0};
+-    %load/vec4 v0000021126d03b30_0;
+-    %cmpi/s 2, 0, 32;
+-    %jmp/0xz  T_5.4, 5;
+-    %vpi_call/w 3 81 "$display", "Expected result: destination missed pulse(s)" {0 0 0};
+-    %jmp T_5.5;
+-T_5.4 ;
+-    %vpi_call/w 3 85 "$display", "Both pulses were captured in this simulation" {0 0 0};
+-T_5.5 ;
+-    %vpi_call/w 3 89 "$finish" {0 0 0};
+-    %end;
+-    .thread T_5;
+-# The file index is used to find the file name in the following table.
+-:file_names 5;
+-    "N/A";
+-    "<interactive>";
+-    "-";
+-    "tb_pulse_sync.sv";
+-    "pulse_sync.sv";
+diff --git a/reset_sync.vcd b/reset_sync.vcd
+deleted file mode 100644
+index a4e4b29..0000000
+--- a/reset_sync.vcd
++++ /dev/null
+@@ -1,64 +0,0 @@
+-$date
+-	Tue Aug 18 19:25:41 2026
+-$end
+-$version
+-	Icarus Verilog
+-$end
+-$timescale
+-	1s
+-$end
+-$scope module tb_reset_sync $end
+-$var wire 1 ! sync_rst_n $end
+-$var reg 1 " async_rst_n $end
+-$var reg 1 # clk $end
+-$scope module uut $end
+-$var wire 1 " async_rst_n $end
+-$var wire 1 # clk $end
+-$var wire 1 ! sync_rst_n $end
+-$var reg 1 $ sync_ff1 $end
+-$var reg 1 % sync_ff2 $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-$comment Show the parameter values. $end
+-$dumpall
+-$end
+-#0
+-$dumpvars
+-x%
+-x$
+-0#
+-1"
+-x!
+-$end
+-#5
+-0!
+-0%
+-0$
+-0"
+-1#
+-#7
+-1"
+-#10
+-0#
+-#15
+-1$
+-1#
+-#20
+-0#
+-#25
+-1!
+-1%
+-1#
+-#30
+-0#
+-#35
+-1#
+-#40
+-0#
+-#42
+-0!
+-0%
+-0$
+-0"
+-#43
+diff --git a/roundrobin.out b/roundrobin.out
+deleted file mode 100644
+index 03b1942..0000000
+--- a/roundrobin.out
++++ /dev/null
+@@ -1,526 +0,0 @@
+-#! /c/Source/iverilog-install/bin/vvp
+-:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+-:ivl_delay_selection "TYPICAL";
+-:vpi_time_precision + 0;
+-:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+-:vpi_module "C:\iverilog\lib\ivl\v2009.vpi";
+-S_0000027f7f0dfeb0 .scope package, "$unit" "$unit" 2 1;
+- .timescale 0 0;
+-S_0000027f7f0e0040 .scope module, "tb_roundrobin" "tb_roundrobin" 3 1;
+- .timescale 0 0;
+-v0000027f7f0d4340_0 .var "clk", 0 0;
+-v0000027f7f13d8c0_0 .net "grant", 3 0, v0000027f7f0e0270_0;  1 drivers
+-v0000027f7f13d6e0_0 .var "req", 3 0;
+-v0000027f7f13db40_0 .var "rst_n", 0 0;
+-S_0000027f7f0cf6b0 .scope autotask, "apply_reset" "apply_reset" 3 61, 3 61 0, S_0000027f7f0e0040;
+- .timescale 0 0;
+-E_0000027f7f0ce0a0 .event negedge, v0000027f7f0e01d0_0;
+-E_0000027f7f0cdaa0 .event posedge, v0000027f7f0e01d0_0;
+-TD_tb_roundrobin.apply_reset ;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000027f7f13db40_0, 0, 1;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000027f7f13d6e0_0, 0, 4;
+-    %pushi/vec4 2, 0, 32;
+-T_0.0 %dup/vec4;
+-    %pushi/vec4 0, 0, 32;
+-    %cmp/s;
+-    %jmp/1xz T_0.1, 5;
+-    %jmp/1 T_0.1, 4;
+-    %pushi/vec4 1, 0, 32;
+-    %sub;
+-    %wait E_0000027f7f0cdaa0;
+-    %jmp T_0.0;
+-T_0.1 ;
+-    %pop/vec4 1;
+-    %wait E_0000027f7f0ce0a0;
+-    %pushi/vec4 1, 0, 1;
+-    %store/vec4 v0000027f7f13db40_0, 0, 1;
+-    %end;
+-S_0000027f7f0cf840 .scope autotask, "check_arbiter" "check_arbiter" 3 25, 3 25 0, S_0000027f7f0e0040;
+- .timescale 0 0;
+-v0000027f7f0a3410_0 .var "expected_grant", 3 0;
+-v0000027f7f0a36a0_0 .var "test_req", 3 0;
+-E_0000027f7f0ce2e0 .event posedge, v0000027f7f0e01d0_0;
+-E_0000027f7f0cdb60 .event negedge, v0000027f7f0e01d0_0;
+-TD_tb_roundrobin.check_arbiter ;
+-    %wait E_0000027f7f0cdb60;
+-    %load/vec4 v0000027f7f0a36a0_0;
+-    %store/vec4 v0000027f7f13d6e0_0, 0, 4;
+-    %delay 1, 0;
+-    %load/vec4 v0000027f7f13d8c0_0;
+-    %nor/r;
+-    %pad/u 4;
+-    %load/vec4 v0000027f7f0a3410_0;
+-    %cmp/e;
+-    %jmp/0xz  T_1.2, 4;
+-    %vpi_call/w 3 35 "$error", "TEST FAILED. req:%b, expected:%b ,grant%b", v0000027f7f13d6e0_0, v0000027f7f0a3410_0, v0000027f7f13d8c0_0 {0 0 0};
+-    %jmp T_1.3;
+-T_1.2 ;
+-    %vpi_call/w 3 38 "$display", "TEST PASSED. req:%b, expected:%b ,grant%b", v0000027f7f13d6e0_0, v0000027f7f0a3410_0, v0000027f7f13d8c0_0 {0 0 0};
+-T_1.3 ;
+-    %vpi_func 3 43 "$onehot0" 1, v0000027f7f13d8c0_0 {0 0 0};
+-    %nor/r;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_1.4, 8;
+-    %vpi_call/w 3 44 "$error", "Birden fazla grant aktif." {0 0 0};
+-T_1.4 ;
+-    %load/vec4 v0000027f7f13d8c0_0;
+-    %load/vec4 v0000027f7f13d6e0_0;
+-    %and;
+-    %load/vec4 v0000027f7f13d8c0_0;
+-    %cmp/ne;
+-    %jmp/0xz  T_1.6, 6;
+-    %vpi_call/w 3 48 "$error", "Istek yapmayan requester grant aldi" {0 0 0};
+-T_1.6 ;
+-    %wait E_0000027f7f0ce2e0;
+-    %delay 1, 0;
+-    %end;
+-S_0000027f7f0d4020 .scope autotask, "req_check" "req_check" 3 15, 3 15 0, S_0000027f7f0e0040;
+- .timescale 0 0;
+-v0000027f7f0a3130_0 .var "expected_req", 0 0;
+-TD_tb_roundrobin.req_check ;
+-    %end;
+-S_0000027f7f0d41b0 .scope module, "uut" "roundrobin" 3 8, 4 1 0, S_0000027f7f0e0040;
+- .timescale 0 0;
+-    .port_info 0 /INPUT 1 "clk";
+-    .port_info 1 /INPUT 1 "rst_n";
+-    .port_info 2 /INPUT 4 "req";
+-    .port_info 3 /OUTPUT 4 "grant";
+-v0000027f7f0e01d0_0 .net "clk", 0 0, v0000027f7f0d4340_0;  1 drivers
+-v0000027f7f0e0270_0 .var "grant", 3 0;
+-v0000027f7edebe60_0 .var "last_grant", 1 0;
+-v0000027f7edebf00_0 .var "next_last_grant", 1 0;
+-v0000027f7f0cf9d0_0 .net "req", 3 0, v0000027f7f13d6e0_0;  1 drivers
+-v0000027f7f0cfa70_0 .net "rst_n", 0 0, v0000027f7f13db40_0;  1 drivers
+-E_0000027f7f0cd720/0 .event anyedge, v0000027f7edebe60_0, v0000027f7f0cf9d0_0, v0000027f7f0cf9d0_0, v0000027f7f0cf9d0_0;
+-E_0000027f7f0cd720/1 .event anyedge, v0000027f7f0cf9d0_0;
+-E_0000027f7f0cd720 .event/or E_0000027f7f0cd720/0, E_0000027f7f0cd720/1;
+-E_0000027f7f0ce1a0/0 .event negedge, v0000027f7f0cfa70_0;
+-E_0000027f7f0ce1a0/1 .event posedge, v0000027f7f0e01d0_0;
+-E_0000027f7f0ce1a0 .event/or E_0000027f7f0ce1a0/0, E_0000027f7f0ce1a0/1;
+-    .scope S_0000027f7f0d41b0;
+-T_3 ;
+-    %wait E_0000027f7f0ce1a0;
+-    %load/vec4 v0000027f7f0cfa70_0;
+-    %nor/r;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_3.0, 8;
+-    %pushi/vec4 3, 0, 2;
+-    %assign/vec4 v0000027f7edebe60_0, 0;
+-    %jmp T_3.1;
+-T_3.0 ;
+-    %load/vec4 v0000027f7edebf00_0;
+-    %assign/vec4 v0000027f7edebe60_0, 0;
+-T_3.1 ;
+-    %jmp T_3;
+-    .thread T_3;
+-    .scope S_0000027f7f0d41b0;
+-T_4 ;
+-Ewait_0 .event/or E_0000027f7f0cd720, E_0x0;
+-    %wait Ewait_0;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %load/vec4 v0000027f7edebe60_0;
+-    %store/vec4 v0000027f7edebf00_0, 0, 2;
+-    %load/vec4 v0000027f7edebe60_0;
+-    %dup/vec4;
+-    %pushi/vec4 0, 0, 2;
+-    %cmp/u;
+-    %jmp/1 T_4.0, 6;
+-    %dup/vec4;
+-    %pushi/vec4 1, 0, 2;
+-    %cmp/u;
+-    %jmp/1 T_4.1, 6;
+-    %dup/vec4;
+-    %pushi/vec4 2, 0, 2;
+-    %cmp/u;
+-    %jmp/1 T_4.2, 6;
+-    %dup/vec4;
+-    %pushi/vec4 3, 0, 2;
+-    %cmp/u;
+-    %jmp/1 T_4.3, 6;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %pushi/vec4 3, 0, 2;
+-    %store/vec4 v0000027f7edebf00_0, 0, 2;
+-    %jmp T_4.5;
+-T_4.0 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 1, 2;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.6, 8;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %jmp T_4.7;
+-T_4.6 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 2, 3;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.8, 8;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %jmp T_4.9;
+-T_4.8 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 3, 3;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.10, 8;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %jmp T_4.11;
+-T_4.10 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 0, 2;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.12, 8;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-T_4.12 ;
+-T_4.11 ;
+-T_4.9 ;
+-T_4.7 ;
+-    %jmp T_4.5;
+-T_4.1 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 2, 3;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.14, 8;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %jmp T_4.15;
+-T_4.14 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 3, 3;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.16, 8;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %jmp T_4.17;
+-T_4.16 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 0, 2;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.18, 8;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %jmp T_4.19;
+-T_4.18 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 1, 2;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.20, 8;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-T_4.20 ;
+-T_4.19 ;
+-T_4.17 ;
+-T_4.15 ;
+-    %jmp T_4.5;
+-T_4.2 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 3, 3;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.22, 8;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %jmp T_4.23;
+-T_4.22 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 0, 2;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.24, 8;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %jmp T_4.25;
+-T_4.24 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 1, 2;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.26, 8;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %jmp T_4.27;
+-T_4.26 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 2, 3;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.28, 8;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-T_4.28 ;
+-T_4.27 ;
+-T_4.25 ;
+-T_4.23 ;
+-    %jmp T_4.5;
+-T_4.3 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 0, 2;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.30, 8;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %jmp T_4.31;
+-T_4.30 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 1, 2;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.32, 8;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %jmp T_4.33;
+-T_4.32 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 2, 3;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.34, 8;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-    %jmp T_4.35;
+-T_4.34 ;
+-    %load/vec4 v0000027f7f0cf9d0_0;
+-    %parti/s 1, 3, 3;
+-    %flag_set/vec4 8;
+-    %jmp/0xz  T_4.36, 8;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000027f7f0e0270_0, 0, 4;
+-T_4.36 ;
+-T_4.35 ;
+-T_4.33 ;
+-T_4.31 ;
+-    %jmp T_4.5;
+-T_4.5 ;
+-    %pop/vec4 1;
+-    %load/vec4 v0000027f7f0e0270_0;
+-    %dup/vec4;
+-    %pushi/vec4 1, 0, 4;
+-    %cmp/u;
+-    %jmp/1 T_4.38, 6;
+-    %dup/vec4;
+-    %pushi/vec4 2, 0, 4;
+-    %cmp/u;
+-    %jmp/1 T_4.39, 6;
+-    %dup/vec4;
+-    %pushi/vec4 4, 0, 4;
+-    %cmp/u;
+-    %jmp/1 T_4.40, 6;
+-    %dup/vec4;
+-    %pushi/vec4 8, 0, 4;
+-    %cmp/u;
+-    %jmp/1 T_4.41, 6;
+-    %load/vec4 v0000027f7edebe60_0;
+-    %store/vec4 v0000027f7edebf00_0, 0, 2;
+-    %jmp T_4.43;
+-T_4.38 ;
+-    %pushi/vec4 0, 0, 2;
+-    %store/vec4 v0000027f7edebf00_0, 0, 2;
+-    %jmp T_4.43;
+-T_4.39 ;
+-    %pushi/vec4 1, 0, 2;
+-    %store/vec4 v0000027f7edebf00_0, 0, 2;
+-    %jmp T_4.43;
+-T_4.40 ;
+-    %pushi/vec4 2, 0, 2;
+-    %store/vec4 v0000027f7edebf00_0, 0, 2;
+-    %jmp T_4.43;
+-T_4.41 ;
+-    %pushi/vec4 3, 0, 2;
+-    %store/vec4 v0000027f7edebf00_0, 0, 2;
+-    %jmp T_4.43;
+-T_4.43 ;
+-    %pop/vec4 1;
+-    %jmp T_4;
+-    .thread T_4, $push;
+-    .scope S_0000027f7f0e0040;
+-T_5 ;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000027f7f0d4340_0, 0, 1;
+-T_5.0 ;
+-    %delay 5, 0;
+-    %load/vec4 v0000027f7f0d4340_0;
+-    %inv;
+-    %store/vec4 v0000027f7f0d4340_0, 0, 1;
+-    %jmp T_5.0;
+-    %end;
+-    .thread T_5;
+-    .scope S_0000027f7f0e0040;
+-T_6 ;
+-    %pushi/vec4 0, 0, 1;
+-    %store/vec4 v0000027f7f13db40_0, 0, 1;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000027f7f13d6e0_0, 0, 4;
+-    %alloc S_0000027f7f0cf6b0;
+-    %fork TD_tb_roundrobin.apply_reset, S_0000027f7f0cf6b0;
+-    %join;
+-    %free S_0000027f7f0cf6b0;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf6b0;
+-    %fork TD_tb_roundrobin.apply_reset, S_0000027f7f0cf6b0;
+-    %join;
+-    %free S_0000027f7f0cf6b0;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 15, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 15, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 15, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 15, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 8, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 15, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf6b0;
+-    %fork TD_tb_roundrobin.apply_reset, S_0000027f7f0cf6b0;
+-    %join;
+-    %free S_0000027f7f0cf6b0;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 5, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 5, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 5, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 5, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 4, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf6b0;
+-    %fork TD_tb_roundrobin.apply_reset, S_0000027f7f0cf6b0;
+-    %join;
+-    %free S_0000027f7f0cf6b0;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 15, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 1, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 0, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %alloc S_0000027f7f0cf840;
+-    %pushi/vec4 15, 0, 4;
+-    %store/vec4 v0000027f7f0a36a0_0, 0, 4;
+-    %pushi/vec4 2, 0, 4;
+-    %store/vec4 v0000027f7f0a3410_0, 0, 4;
+-    %fork TD_tb_roundrobin.check_arbiter, S_0000027f7f0cf840;
+-    %join;
+-    %free S_0000027f7f0cf840;
+-    %vpi_call/w 3 116 "$display", "ALL ROUND-ROBIN ARBITER TESTS PASSED" {0 0 0};
+-    %vpi_call/w 3 117 "$finish" {0 0 0};
+-    %end;
+-    .thread T_6;
+-# The file index is used to find the file name in the following table.
+-:file_names 5;
+-    "N/A";
+-    "<interactive>";
+-    "-";
+-    "tb_roundrobin.sv";
+-    "roundrobin.sv";
+diff --git a/scripts/examples.json b/scripts/examples.json
+new file mode 100644
+index 0000000..544f298
+--- /dev/null
++++ b/scripts/examples.json
+@@ -0,0 +1,139 @@
++{
++  "counter-sv": {
++    "language": "sv",
++    "top": "tb_counter",
++    "sources": [
++      "examples/counters/systemverilog/programmable_counter.sv",
++      "examples/counters/systemverilog/tb_counter.sv"
++    ]
++  },
++  "counter-v": {
++    "language": "v",
++    "top": "tb_counter",
++    "sources": [
++      "examples/counters/verilog/programmable_counter.v",
++      "examples/counters/verilog/testbench.v"
++    ]
++  },
++  "counter-vhdl": {
++    "language": "vhdl",
++    "top": "tb_programmable_counter",
++    "sources": [
++      "examples/counters/vhdl/programmable_counter.vhd",
++      "examples/counters/vhdl/tb_counter_vhdl.vhd"
++    ]
++  },
++  "fsm-sv": {
++    "language": "sv",
++    "top": "fsm_tb",
++    "sources": [
++      "examples/fsm/systemverilog/FSM.sv",
++      "examples/fsm/systemverilog/FSM_tb.sv"
++    ]
++  },
++  "fsm-v": {
++    "language": "v",
++    "top": "tb_fsmver",
++    "sources": [
++      "examples/fsm/verilog/fsmverilog.v",
++      "examples/fsm/verilog/tb_fsmverilog.v"
++    ]
++  },
++  "fsm-vhdl": {
++    "language": "vhdl",
++    "top": "tb_fsmvhdl",
++    "sources": [
++      "examples/fsm/vhdl/FSMvhdl.vhd",
++      "examples/fsm/vhdl/tb_fsmvhdl.vhd"
++    ]
++  },
++  "uart-tx": {
++    "language": "sv",
++    "top": "uart_tb",
++    "sources": [
++      "examples/uart/tx/uart_transmitter.sv",
++      "examples/uart/tx/tb_uart.sv"
++    ]
++  },
++  "uart-rx": {
++    "language": "sv",
++    "top": "tb_uart_rx",
++    "sources": [
++      "examples/uart/rx/uart_rx.sv",
++      "examples/uart/rx/tb_uart_rx.sv"
++    ]
++  },
++  "fixed-arbiter": {
++    "language": "sv",
++    "top": "tb_fixed_arbiter",
++    "sources": [
++      "examples/arbiters/fixed_priority/arbiter.sv",
++      "examples/arbiters/fixed_priority/tb_fixed_arbiter.sv"
++    ]
++  },
++  "round-robin": {
++    "language": "sv",
++    "top": "tb_roundrobin",
++    "sources": [
++      "examples/arbiters/round_robin/roundrobin.sv",
++      "examples/arbiters/round_robin/tb_roundrobin.sv"
++    ]
++  },
++  "sync-fifo": {
++    "language": "sv",
++    "top": "tb_sync_fifo",
++    "sources": [
++      "examples/fifo/synchronous/sync_fifo.sv",
++      "examples/fifo/synchronous/tb_fifo.sv"
++    ]
++  },
++  "two-ff": {
++    "language": "sv",
++    "top": "tb_two_ff",
++    "sources": [
++      "examples/cdc/two_ff/2_ff.sv",
++      "examples/cdc/two_ff/two_ff_tb.sv"
++    ]
++  },
++  "pulse-sync": {
++    "language": "sv",
++    "top": "tb_pulse",
++    "sources": [
++      "examples/cdc/pulse/pulse_sync.sv",
++      "examples/cdc/pulse/tb_pulse_sync.sv"
++    ]
++  },
++  "cdc-handshake": {
++    "language": "sv",
++    "top": "tb_cdc",
++    "sources": [
++      "examples/cdc/handshake/cdc.sv",
++      "examples/cdc/handshake/tb_cdc.sv"
++    ]
++  },
++  "multi-cdc": {
++    "language": "sv",
++    "top": "tb_multi_cdc",
++    "sources": [
++      "examples/cdc/reset/reset_synchronizer.sv",
++      "examples/cdc/multi_bit/multi_cdc.sv",
++      "examples/cdc/multi_bit/tb_multi_cdc.sv"
++    ]
++  },
++  "reset-sync": {
++    "language": "sv",
++    "top": "tb_reset_sync",
++    "sources": [
++      "examples/cdc/reset/reset_synchronizer.sv",
++      "examples/cdc/reset/tb_reset_sync.sv"
++    ]
++  },
++  "valid-handshake": {
++    "language": "sv",
++    "top": "tb_handshake",
++    "sources": [
++      "examples/handshake/valid_handshake.sv",
++      "examples/handshake/tb_handshake.sv"
++    ]
++  }
++}
+diff --git a/scripts/run.py b/scripts/run.py
+new file mode 100644
+index 0000000..3310b40
+--- /dev/null
++++ b/scripts/run.py
+@@ -0,0 +1,76 @@
++#!/usr/bin/env python3
++"""Run the existing HDL benches in isolated build directories."""
++import argparse
++import json
++from pathlib import Path
++import re
++import shutil
++import subprocess
++import sys
++
++ROOT = Path(__file__).resolve().parents[1]
++EXAMPLES = json.loads((ROOT / "scripts/examples.json").read_text())
++FAILURE = re.compile(r"\b(?:error|fatal|failed|failure)\b|total errors:\s*[1-9]", re.I)
++
++
++def command(args, directory, timeout):
++    result = subprocess.run(args, cwd=directory, text=True,
++                            stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
++                            timeout=timeout)
++    print(result.stdout, end="")
++    if result.returncode or FAILURE.search(result.stdout):
++        raise RuntimeError("compiler or testbench reported a failure")
++
++
++def run(name, timeout):
++    spec = EXAMPLES[name]
++    directory = ROOT / "build" / name
++    directory.mkdir(parents=True, exist_ok=True)
++    sources = [str(ROOT / path) for path in spec["sources"]]
++    required = ["ghdl"] if spec["language"] == "vhdl" else ["iverilog", "vvp"]
++    for tool in required:
++        if not shutil.which(tool):
++            raise RuntimeError(f"{tool} is missing from PATH")
++    if spec["language"] == "vhdl":
++        command(["ghdl", "-a", "--std=08", *sources], directory, timeout)
++        command(["ghdl", "-e", "--std=08", spec["top"]], directory, timeout)
++        command(["ghdl", "-r", "--std=08", spec["top"],
++                 "--assert-level=error", f"--vcd={name}.vcd"], directory, timeout)
++    else:
++        command(["iverilog", "-g2012", "-s", spec["top"],
++                 "-o", "sim.vvp", *sources], directory, timeout)
++        command(["vvp", "sim.vvp"], directory, timeout)
++
++
++def main():
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("example", nargs="?", choices=["all", *EXAMPLES])
++    parser.add_argument("--list", action="store_true", help="list available examples")
++    parser.add_argument("--timeout", type=float, default=30,
++                        help="wall-clock timeout per command in seconds (default: 30)")
++    args = parser.parse_args()
++    if args.timeout <= 0:
++        parser.error("--timeout must be positive")
++    if args.list:
++        for name, spec in EXAMPLES.items():
++            print(f"{name:18} {spec['language']:5} {spec['top']}")
++        return 0
++    if not args.example:
++        parser.error("provide an example name, all, or --list")
++    names = list(EXAMPLES) if args.example == "all" else [args.example]
++    failed = []
++    for name in names:
++        print(f"\nRunning {name}", flush=True)
++        try:
++            run(name, args.timeout)
++        except (RuntimeError, OSError, subprocess.TimeoutExpired) as exc:
++            print(f"FAIL: {name}: {exc}")
++            failed.append(name)
++        else:
++            print(f"OK: {name} (existing bench completed)")
++    print(f"\n{len(names) - len(failed)}/{len(names)} benches completed without reported errors.")
++    return 1 if failed else 0
++
++
++if __name__ == "__main__":
++    sys.exit(main())
+diff --git a/tb_cdc.vcd b/tb_cdc.vcd
+deleted file mode 100644
+index 279f671..0000000
+--- a/tb_cdc.vcd
++++ /dev/null
+@@ -1,112 +0,0 @@
+-$date
+-	Wed Aug 12 17:46:26 2026
+-$end
+-$version
+-	Icarus Verilog
+-$end
+-$timescale
+-	1ps
+-$end
+-$scope module tb_cdc $end
+-$var wire 1 ! src_busy $end
+-$var wire 1 " dst_pulse $end
+-$var reg 1 # dst_clk $end
+-$var reg 1 $ rst_n $end
+-$var reg 1 % src_clk $end
+-$var reg 1 & src_pulse $end
+-$scope module uut $end
+-$var wire 1 # dst_clk $end
+-$var wire 1 $ rst_n $end
+-$var wire 1 % src_clk $end
+-$var wire 1 & src_pulse $end
+-$var reg 1 ' ack_sync_ff1 $end
+-$var reg 1 ( ack_sync_ff2 $end
+-$var reg 1 ) ack_toggle $end
+-$var reg 1 " dst_pulse $end
+-$var reg 1 * req_sync_d $end
+-$var reg 1 + req_sync_ff1 $end
+-$var reg 1 , req_sync_ff2 $end
+-$var reg 1 - req_toggle $end
+-$var reg 1 ! src_busy $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-$comment Show the parameter values. $end
+-$dumpall
+-$end
+-#0
+-$dumpvars
+-0-
+-0,
+-0+
+-0*
+-0)
+-0(
+-0'
+-0&
+-0%
+-0$
+-0#
+-0"
+-0!
+-$end
+-#5000
+-1%
+-#10000
+-0%
+-1#
+-#15000
+-1%
+-#20000
+-1&
+-1$
+-0%
+-0#
+-#25000
+-1!
+-1-
+-1%
+-#30000
+-1+
+-0&
+-0%
+-1#
+-#35000
+-1%
+-#40000
+-0%
+-0#
+-#45000
+-1%
+-#50000
+-1,
+-0%
+-1#
+-#55000
+-1%
+-#60000
+-0%
+-0#
+-#65000
+-1%
+-#70000
+-1)
+-1"
+-1*
+-0%
+-1#
+-#75000
+-1'
+-1%
+-#80000
+-0%
+-0#
+-#85000
+-0!
+-1(
+-1%
+-#90000
+-0"
+-0%
+-1#
+-#91000
+diff --git a/tb_counter.vcd b/tb_counter.vcd
+deleted file mode 100644
+index 1b92c24..0000000
+--- a/tb_counter.vcd
++++ /dev/null
+@@ -1,133 +0,0 @@
+-$date
+-	Sun Jul 19 22:02:29 2026
+-$end
+-$version
+-	Icarus Verilog
+-$end
+-$timescale
+-	1s
+-$end
+-$scope module tb_counter $end
+-$var wire 1 ! limit_pulse $end
+-$var wire 8 " count [7:0] $end
+-$var parameter 32 # WIDTH $end
+-$var reg 1 $ clk $end
+-$var reg 1 % enable $end
+-$var reg 8 & limit_value [7:0] $end
+-$var reg 1 ' load $end
+-$var reg 8 ( load_value [7:0] $end
+-$var reg 1 ) rst_n $end
+-$var integer 32 * error_count [31:0] $end
+-$scope module dut $end
+-$var wire 1 $ clk $end
+-$var wire 1 % enable $end
+-$var wire 8 + limit_value [7:0] $end
+-$var wire 1 ' load $end
+-$var wire 8 , load_value [7:0] $end
+-$var wire 1 ) rst_n $end
+-$var parameter 32 - WIDTH $end
+-$var reg 8 . count [7:0] $end
+-$var reg 1 ! limit_pulse $end
+-$upscope $end
+-$scope task check_outputs $end
+-$var reg 8 / expected_count [7:0] $end
+-$var reg 1 0 expected_limit_pulse $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-$comment Show the parameter values. $end
+-$dumpall
+-b1000 -
+-b1000 #
+-$end
+-#0
+-$dumpvars
+-x0
+-bx /
+-b0 .
+-b10 ,
+-b100 +
+-b0 *
+-0)
+-b10 (
+-0'
+-b100 &
+-0%
+-0$
+-b0 "
+-0!
+-$end
+-#1
+-00
+-b0 /
+-#5
+-1$
+-#10
+-1'
+-1)
+-0$
+-#15
+-b10 "
+-b10 .
+-1$
+-#20
+-1%
+-0'
+-b10 /
+-0$
+-#25
+-b11 "
+-b11 .
+-1$
+-#30
+-b11 /
+-0$
+-#35
+-b100 "
+-b100 .
+-1$
+-#40
+-b100 /
+-0$
+-#45
+-1!
+-b0 "
+-b0 .
+-1$
+-#50
+-10
+-b0 /
+-0$
+-#55
+-b1 "
+-b1 .
+-0!
+-1$
+-#60
+-0%
+-00
+-b1 /
+-0$
+-#65
+-1$
+-#70
+-1%
+-b11 (
+-b11 ,
+-1'
+-0$
+-#75
+-b11 "
+-b11 .
+-1$
+-#80
+-0'
+-b11 /
+-0$
+-#85
+-b100 "
+-b100 .
+-1$
+-#90
+-b100 /
+-0$
+diff --git a/tb_fsm.vcd b/tb_fsm.vcd
+deleted file mode 100644
+index 8235aed..0000000
+--- a/tb_fsm.vcd
++++ /dev/null
+@@ -1,134 +0,0 @@
+-$date
+-	Mon Jul 20 19:39:33 2026
+-$end
+-$version
+-	Icarus Verilog
+-$end
+-$timescale
+-	1s
+-$end
+-$scope module fsm_tb $end
+-$var wire 1 ! match $end
+-$var reg 1 " bit_in $end
+-$var reg 1 # clk $end
+-$var reg 1 $ rst_n $end
+-$var reg 1 % valid $end
+-$scope module dut $end
+-$var wire 1 " bit_in $end
+-$var wire 1 # clk $end
+-$var wire 1 $ rst_n $end
+-$var wire 1 % valid $end
+-$var reg 2 & current_state [1:0] $end
+-$var reg 1 ' detect $end
+-$var reg 1 ! match $end
+-$var reg 2 ( next_state [1:0] $end
+-$upscope $end
+-$scope task send_bit $end
+-$var reg 1 ) expected_match $end
+-$var reg 1 * input_bit $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-$comment Show the parameter values. $end
+-$dumpall
+-$end
+-#0
+-$dumpvars
+-x*
+-x)
+-b0 (
+-0'
+-b0 &
+-0%
+-0$
+-0#
+-0"
+-0!
+-$end
+-#5
+-1#
+-#10
+-0#
+-#15
+-1#
+-#20
+-0)
+-1*
+-1$
+-0#
+-#25
+-1#
+-#30
+-b1 (
+-1%
+-1"
+-0#
+-#35
+-b1 &
+-1#
+-#36
+-0*
+-#40
+-b10 (
+-0"
+-0#
+-#45
+-b0 (
+-b10 &
+-1#
+-#46
+-1*
+-#50
+-b11 (
+-1"
+-0#
+-#55
+-b1 (
+-1'
+-b11 &
+-1#
+-#56
+-1)
+-#60
+-0#
+-#65
+-0'
+-1!
+-b1 &
+-1#
+-#66
+-0)
+-0*
+-#70
+-b10 (
+-0"
+-0#
+-#75
+-b0 (
+-0!
+-b10 &
+-1#
+-#76
+-1*
+-#80
+-b11 (
+-1"
+-0#
+-#85
+-b1 (
+-1'
+-b11 &
+-1#
+-#86
+-1)
+-#90
+-0#
+-#95
+-0'
+-1!
+-b1 &
+-1#
+-#100
+-0"
+-0%
+-0#
+diff --git a/tb_fsmv.vcd b/tb_fsmv.vcd
+deleted file mode 100644
+index 7913108..0000000
+--- a/tb_fsmv.vcd
++++ /dev/null
+@@ -1,142 +0,0 @@
+-$date
+-	Tue Jul 21 04:08:10 2026
+-$end
+-$version
+-	Icarus Verilog
+-$end
+-$timescale
+-	1s
+-$end
+-$scope module tb_fsmver $end
+-$var wire 1 ! match $end
+-$var reg 1 " bit_in $end
+-$var reg 1 # clk $end
+-$var reg 1 $ rst_n $end
+-$var reg 1 % valid $end
+-$scope module uut $end
+-$var wire 1 " bit_in $end
+-$var wire 1 # clk $end
+-$var wire 1 $ rst_n $end
+-$var wire 1 % valid $end
+-$var parameter 2 & IDLE $end
+-$var parameter 2 ' S1 $end
+-$var parameter 2 ( S10 $end
+-$var parameter 2 ) S101 $end
+-$var reg 2 * current_state [1:0] $end
+-$var reg 1 + detect $end
+-$var reg 1 ! match $end
+-$var reg 2 , next_state [1:0] $end
+-$upscope $end
+-$scope task send_bit $end
+-$var reg 1 - expected_bit $end
+-$var reg 1 . input_bit $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-$comment Show the parameter values. $end
+-$dumpall
+-b11 )
+-b10 (
+-b1 '
+-b0 &
+-$end
+-#0
+-$dumpvars
+-x.
+-x-
+-b0 ,
+-0+
+-b0 *
+-0%
+-0$
+-0#
+-0"
+-0!
+-$end
+-#5
+-1#
+-#10
+-0#
+-#15
+-1#
+-#20
+-0-
+-1.
+-1$
+-0#
+-#25
+-1#
+-#30
+-b1 ,
+-1%
+-1"
+-0#
+-#35
+-b1 *
+-1#
+-#36
+-0.
+-#40
+-b10 ,
+-0"
+-0#
+-#45
+-b0 ,
+-b10 *
+-1#
+-#46
+-1.
+-#50
+-b11 ,
+-1"
+-0#
+-#55
+-b1 ,
+-1+
+-b11 *
+-1#
+-#56
+-1-
+-#60
+-0#
+-#65
+-0+
+-1!
+-b1 *
+-1#
+-#66
+-0-
+-0.
+-#70
+-b10 ,
+-0"
+-0#
+-#75
+-b0 ,
+-0!
+-b10 *
+-1#
+-#76
+-1.
+-#80
+-b11 ,
+-1"
+-0#
+-#85
+-b1 ,
+-1+
+-b11 *
+-1#
+-#86
+-1-
+-#90
+-0#
+-#95
+-0+
+-1!
+-b1 *
+-1#
+-#100
+-0"
+-0%
+-0#
+diff --git a/tb_fsmvhdl.vcd b/tb_fsmvhdl.vcd
+deleted file mode 100644
+index 94d9cad..0000000
+--- a/tb_fsmvhdl.vcd
++++ /dev/null
+@@ -1,134 +0,0 @@
+-$date
+-  Wed Jul 22 03:21:51 2026
+-$end
+-$version
+-  GHDL v0
+-$end
+-$timescale
+-  1 fs
+-$end
+-$scope module standard $end
+-$upscope $end
+-$scope module textio $end
+-$upscope $end
+-$scope module std_logic_1164 $end
+-$upscope $end
+-$scope module env $end
+-$upscope $end
+-$scope module tb_fsmvhdl $end
+-$var reg 1 ! clk $end
+-$var reg 1 " rst_n $end
+-$var reg 1 # valid $end
+-$var reg 1 $ bit_in $end
+-$var reg 1 % match $end
+-$scope module uut $end
+-$var reg 1 & clk $end
+-$var reg 1 ' rst_n $end
+-$var reg 1 ( valid $end
+-$var reg 1 ) bit_in $end
+-$var reg 1 * match $end
+-$comment current_state is not handled $end
+-$comment next_state is not handled $end
+-$var reg 1 + detected_comb $end
+-$var reg 1 , matched_reg $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-#0
+-0!
+-0"
+-0#
+-0$
+-0%
+-0&
+-0'
+-0(
+-0)
+-0*
+-0+
+-0,
+-#5000000
+-1!
+-1&
+-#10000000
+-0!
+-0&
+-#15000000
+-1!
+-1&
+-#20000000
+-0!
+-0&
+-#25000000
+-1!
+-1"
+-1&
+-1'
+-#30000000
+-0!
+-1#
+-1$
+-0&
+-1(
+-1)
+-#35000000
+-1!
+-1&
+-#40000000
+-0!
+-0$
+-0&
+-0)
+-#45000000
+-1!
+-1&
+-#50000000
+-0!
+-1$
+-0&
+-1)
+-#55000000
+-1!
+-1&
+-1+
+-#60000000
+-0!
+-0&
+-#65000000
+-1!
+-1%
+-1&
+-1*
+-0+
+-1,
+-#70000000
+-0!
+-0$
+-0&
+-0)
+-#75000000
+-1!
+-0%
+-1&
+-0*
+-0,
+-#80000000
+-0!
+-1$
+-0&
+-1)
+-#85000000
+-1!
+-1&
+-1+
+-#90000000
+-0!
+-0&
+-#95000000
+-1!
+-1%
+-1&
+-1*
+-0+
+-1,
+-#100000000
+diff --git a/tb_handshake.vcd b/tb_handshake.vcd
+deleted file mode 100644
+index 680442a..0000000
+--- a/tb_handshake.vcd
++++ /dev/null
+@@ -1,98 +0,0 @@
+-$date
+-	Thu Jul 30 00:18:52 2026
+-$end
+-$version
+-	Icarus Verilog
+-$end
+-$timescale
+-	1ps
+-$end
+-$scope module tb_handshake $end
+-$var wire 1 ! out_valid $end
+-$var wire 8 " out_data [7:0] $end
+-$var wire 1 # in_ready $end
+-$var reg 1 $ clk $end
+-$var reg 8 % in_data [7:0] $end
+-$var reg 1 & in_valid $end
+-$var reg 1 ' out_ready $end
+-$var reg 1 ( rst_n $end
+-$scope module uut $end
+-$var wire 1 $ clk $end
+-$var wire 8 ) in_data [7:0] $end
+-$var wire 1 & in_valid $end
+-$var wire 1 ' out_ready $end
+-$var wire 1 * pop $end
+-$var wire 1 + push $end
+-$var wire 1 ( rst_n $end
+-$var reg 8 , data_reg [7:0] $end
+-$var reg 1 - full_reg $end
+-$var reg 1 # in_ready $end
+-$var reg 8 . out_data [7:0] $end
+-$var reg 1 ! out_valid $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-$comment Show the parameter values. $end
+-$dumpall
+-$end
+-#0
+-$dumpvars
+-b0 .
+-0-
+-b0 ,
+-0+
+-0*
+-b0 )
+-0(
+-0'
+-0&
+-b0 %
+-0$
+-1#
+-b0 "
+-0!
+-$end
+-#5000
+-1$
+-#10000
+-0$
+-#15000
+-1(
+-1$
+-#20000
+-0$
+-#25000
+-1$
+-#30000
+-1+
+-b11001 %
+-b11001 )
+-1&
+-0$
+-#35000
+-0+
+-0#
+-1!
+-b11001 "
+-b11001 .
+-1-
+-b11001 ,
+-1$
+-#40000
+-0&
+-0$
+-#45000
+-1$
+-#50000
+-1*
+-1#
+-1'
+-0$
+-#55000
+-0*
+-0!
+-0-
+-1$
+-#60000
+-0'
+-0$
+diff --git a/tb_pulse.vcd b/tb_pulse.vcd
+deleted file mode 100644
+index 4f933ee..0000000
+--- a/tb_pulse.vcd
++++ /dev/null
+@@ -1,184 +0,0 @@
+-$date
+-	Wed Aug 12 02:02:07 2026
+-$end
+-$version
+-	Icarus Verilog
+-$end
+-$timescale
+-	1ps
+-$end
+-$scope module tb_pulse $end
+-$var wire 1 ! pulse_out $end
+-$var reg 1 " dst_clk $end
+-$var reg 1 # pulse_in $end
+-$var reg 1 $ rst_n $end
+-$var reg 1 % src_clk $end
+-$var integer 32 & pulse_count [31:0] $end
+-$scope module uut $end
+-$var wire 1 " dst_clk $end
+-$var wire 1 # pulse_in $end
+-$var wire 1 ! pulse_out $end
+-$var wire 1 $ rst_n $end
+-$var wire 1 % src_clk $end
+-$var reg 1 ' src_toggle $end
+-$var reg 1 ( sync_ff1 $end
+-$var reg 1 ) sync_ff2 $end
+-$var reg 1 * sync_ff2_d $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-$comment Show the parameter values. $end
+-$dumpall
+-$end
+-#0
+-$dumpvars
+-0*
+-0)
+-0(
+-0'
+-b0 &
+-0%
+-0$
+-0#
+-0"
+-0!
+-$end
+-#5000
+-1%
+-#10000
+-0%
+-#15000
+-1%
+-#20000
+-1$
+-0%
+-#25000
+-1%
+-1"
+-#30000
+-1#
+-0%
+-#35000
+-1'
+-1%
+-#40000
+-0#
+-0%
+-#45000
+-1%
+-#50000
+-1#
+-0%
+-0"
+-#55000
+-0'
+-1%
+-#60000
+-0#
+-0%
+-#65000
+-1%
+-#70000
+-0%
+-#75000
+-1%
+-1"
+-#80000
+-0%
+-#85000
+-1%
+-#90000
+-0%
+-#95000
+-1%
+-#100000
+-0%
+-0"
+-#105000
+-1%
+-#110000
+-0%
+-#115000
+-1%
+-#120000
+-0%
+-#125000
+-1%
+-1"
+-#130000
+-0%
+-#135000
+-1%
+-#140000
+-0%
+-#145000
+-1%
+-#150000
+-0%
+-0"
+-#155000
+-1%
+-#160000
+-0%
+-#165000
+-1%
+-#170000
+-0%
+-#175000
+-1%
+-1"
+-#180000
+-0%
+-#185000
+-1%
+-#190000
+-0%
+-#195000
+-1%
+-#200000
+-0%
+-0"
+-#205000
+-1%
+-#210000
+-0%
+-#215000
+-1%
+-#220000
+-0%
+-#225000
+-1%
+-1"
+-#230000
+-0%
+-#235000
+-1%
+-#240000
+-0%
+-#245000
+-1%
+-#250000
+-0%
+-0"
+-#255000
+-1%
+-#260000
+-0%
+-#265000
+-1%
+-#270000
+-0%
+-#275000
+-1%
+-1"
+-#280000
+-0%
+-#285000
+-1%
+-#290000
+-0%
+-#295000
+-1%
+-#300000
+-0%
+-0"
+diff --git a/tb_sync_fifo.vcd b/tb_sync_fifo.vcd
+deleted file mode 100644
+index bd1553b..0000000
+--- a/tb_sync_fifo.vcd
++++ /dev/null
+@@ -1,651 +0,0 @@
+-$date
+-	Sat Jul 25 04:41:07 2026
+-$end
+-$version
+-	Icarus Verilog
+-$end
+-$timescale
+-	1ps
+-$end
+-$scope module tb_sync_fifo $end
+-$var wire 1 ! full $end
+-$var wire 1 " empty $end
+-$var wire 8 # data_out [7:0] $end
+-$var parameter 32 $ DEPTH $end
+-$var parameter 32 % WIDTH $end
+-$var reg 1 & clk $end
+-$var reg 8 ' data_in [7:0] $end
+-$var reg 8 ( previous_data [7:0] $end
+-$var reg 1 ) rd_en $end
+-$var reg 8 * received_data [7:0] $end
+-$var reg 1 + rst_n $end
+-$var reg 1 , wr_en $end
+-$scope module dut $end
+-$var wire 1 & clk $end
+-$var wire 8 - data_in [7:0] $end
+-$var wire 1 ) rd_en $end
+-$var wire 1 + rst_n $end
+-$var wire 1 , wr_en $end
+-$var wire 1 ! full $end
+-$var wire 1 " empty $end
+-$var parameter 32 . COUNT_WIDTH $end
+-$var parameter 32 / DEPTH $end
+-$var parameter 32 0 PTR_WIDTH $end
+-$var parameter 32 1 WIDTH $end
+-$var reg 4 2 count [3:0] $end
+-$var reg 8 3 data_out [7:0] $end
+-$var reg 3 4 read_ptr [2:0] $end
+-$var reg 3 5 write_ptr [2:0] $end
+-$upscope $end
+-$scope begin $ivl_for_loop0 $end
+-$var integer 32 6 i [31:0] $end
+-$upscope $end
+-$scope begin $ivl_for_loop1 $end
+-$var integer 32 7 i [31:0] $end
+-$upscope $end
+-$scope task check_data $end
+-$upscope $end
+-$scope task read_fifo $end
+-$upscope $end
+-$scope task reset_fifo $end
+-$upscope $end
+-$scope task simultaneous_read_write $end
+-$upscope $end
+-$scope task write_fifo $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-$comment Show the parameter values. $end
+-$dumpall
+-b1000 1
+-b11 0
+-b1000 /
+-b100 .
+-b1000 %
+-b1000 $
+-$end
+-#0
+-$dumpvars
+-b0 7
+-b0 6
+-bx 5
+-bx 4
+-bx 3
+-bx 2
+-b0 -
+-0,
+-1+
+-bx *
+-0)
+-bx (
+-b0 '
+-0&
+-bx #
+-x"
+-x!
+-$end
+-#5000
+-1&
+-#10000
+-b0 #
+-b0 3
+-0!
+-1"
+-b0 2
+-b0 4
+-b0 5
+-0+
+-0&
+-#15000
+-1&
+-#20000
+-0&
+-#25000
+-1&
+-#30000
+-1+
+-0&
+-#35000
+-1&
+-#40000
+-0&
+-#45000
+-1&
+-#50000
+-1,
+-b10100101 '
+-b10100101 -
+-0&
+-#55000
+-0"
+-b1 2
+-b1 5
+-1&
+-#60000
+-0,
+-0&
+-#65000
+-1&
+-#70000
+-1)
+-0&
+-#75000
+-1"
+-b0 2
+-b1 4
+-b10100101 #
+-b10100101 3
+-1&
+-#80000
+-b10100101 *
+-0)
+-0&
+-#85000
+-1&
+-#90000
+-b0 #
+-b0 3
+-b0 4
+-b0 5
+-b0 '
+-b0 -
+-0+
+-0&
+-#95000
+-1&
+-#100000
+-0&
+-#105000
+-1&
+-#110000
+-1+
+-0&
+-#115000
+-1&
+-#120000
+-0&
+-#125000
+-1&
+-#130000
+-1,
+-b10001 '
+-b10001 -
+-0&
+-#135000
+-0"
+-b1 2
+-b1 5
+-1&
+-#140000
+-0,
+-0&
+-#145000
+-1&
+-#150000
+-1,
+-b100010 '
+-b100010 -
+-0&
+-#155000
+-b10 2
+-b10 5
+-1&
+-#160000
+-0,
+-0&
+-#165000
+-1&
+-#170000
+-1,
+-b110011 '
+-b110011 -
+-0&
+-#175000
+-b11 2
+-b11 5
+-1&
+-#180000
+-0,
+-0&
+-#185000
+-1&
+-#190000
+-1)
+-0&
+-#195000
+-b10 2
+-b1 4
+-b10001 #
+-b10001 3
+-1&
+-#200000
+-b10001 *
+-0)
+-0&
+-#205000
+-1&
+-#210000
+-1)
+-0&
+-#215000
+-b1 2
+-b10 4
+-b100010 #
+-b100010 3
+-1&
+-#220000
+-b100010 *
+-0)
+-0&
+-#225000
+-1&
+-#230000
+-1)
+-0&
+-#235000
+-1"
+-b0 2
+-b11 4
+-b110011 #
+-b110011 3
+-1&
+-#240000
+-b110011 *
+-0)
+-0&
+-#245000
+-1&
+-#250000
+-b0 #
+-b0 3
+-b0 4
+-b0 5
+-b0 '
+-b0 -
+-0+
+-0&
+-#255000
+-1&
+-#260000
+-0&
+-#265000
+-1&
+-#270000
+-1+
+-0&
+-#275000
+-1&
+-#280000
+-0&
+-#285000
+-1&
+-#290000
+-1,
+-0&
+-#295000
+-0"
+-b1 2
+-b1 5
+-1&
+-#300000
+-b1 6
+-0,
+-0&
+-#305000
+-1&
+-#310000
+-1,
+-b1 '
+-b1 -
+-0&
+-#315000
+-b10 2
+-b10 5
+-1&
+-#320000
+-b10 6
+-0,
+-0&
+-#325000
+-1&
+-#330000
+-1,
+-b10 '
+-b10 -
+-0&
+-#335000
+-b11 2
+-b11 5
+-1&
+-#340000
+-b11 6
+-0,
+-0&
+-#345000
+-1&
+-#350000
+-1,
+-b11 '
+-b11 -
+-0&
+-#355000
+-b100 2
+-b100 5
+-1&
+-#360000
+-b100 6
+-0,
+-0&
+-#365000
+-1&
+-#370000
+-1,
+-b100 '
+-b100 -
+-0&
+-#375000
+-b101 2
+-b101 5
+-1&
+-#380000
+-b101 6
+-0,
+-0&
+-#385000
+-1&
+-#390000
+-1,
+-b101 '
+-b101 -
+-0&
+-#395000
+-b110 2
+-b110 5
+-1&
+-#400000
+-b110 6
+-0,
+-0&
+-#405000
+-1&
+-#410000
+-1,
+-b110 '
+-b110 -
+-0&
+-#415000
+-b111 2
+-b111 5
+-1&
+-#420000
+-b111 6
+-0,
+-0&
+-#425000
+-1&
+-#430000
+-1,
+-b111 '
+-b111 -
+-0&
+-#435000
+-1!
+-b1000 2
+-b0 5
+-1&
+-#440000
+-b1000 6
+-0,
+-0&
+-#445000
+-1&
+-#450000
+-1,
+-b11101110 '
+-b11101110 -
+-0&
+-#455000
+-1&
+-#460000
+-0,
+-0&
+-#465000
+-1&
+-#470000
+-1)
+-0&
+-#475000
+-0!
+-b111 2
+-b1 4
+-1&
+-#480000
+-b1 7
+-b0 *
+-0)
+-0&
+-#485000
+-1&
+-#490000
+-1)
+-0&
+-#495000
+-b110 2
+-b10 4
+-b1 #
+-b1 3
+-1&
+-#500000
+-b10 7
+-b1 *
+-0)
+-0&
+-#505000
+-1&
+-#510000
+-1)
+-0&
+-#515000
+-b101 2
+-b11 4
+-b10 #
+-b10 3
+-1&
+-#520000
+-b11 7
+-b10 *
+-0)
+-0&
+-#525000
+-1&
+-#530000
+-1)
+-0&
+-#535000
+-b100 2
+-b100 4
+-b11 #
+-b11 3
+-1&
+-#540000
+-b100 7
+-b11 *
+-0)
+-0&
+-#545000
+-1&
+-#550000
+-1)
+-0&
+-#555000
+-b11 2
+-b101 4
+-b100 #
+-b100 3
+-1&
+-#560000
+-b101 7
+-b100 *
+-0)
+-0&
+-#565000
+-1&
+-#570000
+-1)
+-0&
+-#575000
+-b10 2
+-b110 4
+-b101 #
+-b101 3
+-1&
+-#580000
+-b110 7
+-b101 *
+-0)
+-0&
+-#585000
+-1&
+-#590000
+-1)
+-0&
+-#595000
+-b1 2
+-b111 4
+-b110 #
+-b110 3
+-1&
+-#600000
+-b111 7
+-b110 *
+-0)
+-0&
+-#605000
+-1&
+-#610000
+-1)
+-0&
+-#615000
+-1"
+-b0 2
+-b0 4
+-b111 #
+-b111 3
+-1&
+-#620000
+-b111 (
+-b1000 7
+-b111 *
+-0)
+-0&
+-#625000
+-1&
+-#630000
+-1)
+-0&
+-#635000
+-1&
+-#640000
+-0)
+-0&
+-#645000
+-1&
+-#650000
+-b0 #
+-b0 3
+-b0 '
+-b0 -
+-0+
+-0&
+-#655000
+-1&
+-#660000
+-0&
+-#665000
+-1&
+-#670000
+-1+
+-0&
+-#675000
+-1&
+-#680000
+-0&
+-#685000
+-1&
+-#690000
+-1,
+-b10100001 '
+-b10100001 -
+-0&
+-#695000
+-0"
+-b1 2
+-b1 5
+-1&
+-#700000
+-0,
+-0&
+-#705000
+-1&
+-#710000
+-1,
+-b10110010 '
+-b10110010 -
+-0&
+-#715000
+-b10 2
+-b10 5
+-1&
+-#720000
+-0,
+-0&
+-#725000
+-1&
+-#730000
+-1)
+-1,
+-b11000011 '
+-b11000011 -
+-0&
+-#735000
+-b1 4
+-b10100001 #
+-b10100001 3
+-b11 5
+-1&
+-#740000
+-b10100001 *
+-0)
+-0,
+-0&
+-#745000
+-1&
+-#750000
+-1)
+-0&
+-#755000
+-b1 2
+-b10 4
+-b10110010 #
+-b10110010 3
+-1&
+-#760000
+-b10110010 *
+-0)
+-0&
+-#765000
+-1&
+-#770000
+-1)
+-0&
+-#775000
+-1"
+-b0 2
+-b11 4
+-b11000011 #
+-b11000011 3
+-1&
+-#780000
+-b11000011 *
+-0)
+-0&
+diff --git a/tb_two_ff.vcd b/tb_two_ff.vcd
+deleted file mode 100644
+index a6b8df4..0000000
+--- a/tb_two_ff.vcd
++++ /dev/null
+@@ -1,85 +0,0 @@
+-$date
+-	Mon Aug 03 18:33:23 2026
+-$end
+-$version
+-	Icarus Verilog
+-$end
+-$timescale
+-	1s
+-$end
+-$scope module tb_two_ff $end
+-$var wire 1 ! sync_out $end
+-$var reg 1 " async_in $end
+-$var reg 1 # clk $end
+-$var reg 1 $ rst_n $end
+-$scope module uut $end
+-$var wire 1 " async_in $end
+-$var wire 1 # clk $end
+-$var wire 1 $ rst_n $end
+-$var wire 1 ! sync_out $end
+-$var reg 1 % ff1 $end
+-$var reg 1 & ff2 $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-$comment Show the parameter values. $end
+-$dumpall
+-$end
+-#0
+-$dumpvars
+-0&
+-0%
+-0$
+-0#
+-0"
+-0!
+-$end
+-#5
+-1#
+-#10
+-0#
+-#15
+-1#
+-#20
+-1$
+-0#
+-#25
+-1#
+-#30
+-1"
+-0#
+-#35
+-1%
+-1#
+-#40
+-0#
+-#45
+-1!
+-1&
+-1#
+-#50
+-0"
+-0#
+-#55
+-0%
+-1#
+-#60
+-0#
+-#65
+-0!
+-0&
+-1#
+-#70
+-0#
+-#71
+-1"
+-#74
+-0"
+-#75
+-1#
+-#80
+-0#
+-#85
+-1#
+-#90
+-0#
+diff --git a/tb_uart.vcd b/tb_uart.vcd
+deleted file mode 100644
+index 5c16893..0000000
+--- a/tb_uart.vcd
++++ /dev/null
+@@ -1,376 +0,0 @@
+-$date
+-	Thu Jul 23 04:41:45 2026
+-$end
+-$version
+-	Icarus Verilog
+-$end
+-$timescale
+-	1ps
+-$end
+-$scope module uart_tb $end
+-$var wire 1 ! tx $end
+-$var wire 1 " done $end
+-$var wire 1 # busy $end
+-$var parameter 32 $ CLK_PER_BITS $end
+-$var reg 1 % clk $end
+-$var reg 8 & data_in [7:0] $end
+-$var reg 1 ' rst_n $end
+-$var reg 1 ( start $end
+-$scope module dut $end
+-$var wire 1 % clk $end
+-$var wire 8 ) data_in [7:0] $end
+-$var wire 1 ' rst_n $end
+-$var wire 1 ( start $end
+-$var parameter 32 * CLKS_PER_BITS $end
+-$var reg 2 + baud_counter [1:0] $end
+-$var reg 3 , bit_index [2:0] $end
+-$var reg 1 # busy $end
+-$var reg 2 - current_state [1:0] $end
+-$var reg 8 . data_reg [7:0] $end
+-$var reg 1 " done $end
+-$var reg 2 / next_state [1:0] $end
+-$var reg 1 ! tx $end
+-$upscope $end
+-$scope task check_tx $end
+-$var reg 8 0 expected_data [7:0] $end
+-$scope begin $ivl_for_loop0 $end
+-$var integer 32 1 i [31:0] $end
+-$upscope $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-$comment Show the parameter values. $end
+-$dumpall
+-b100 *
+-b100 $
+-$end
+-#0
+-$dumpvars
+-b0 1
+-bx 0
+-b0 /
+-b0 .
+-b0 -
+-b0 ,
+-b0 +
+-b0 )
+-0(
+-0'
+-b0 &
+-0%
+-0#
+-0"
+-1!
+-$end
+-#5000
+-1%
+-#10000
+-0%
+-#15000
+-1'
+-1%
+-#20000
+-0%
+-#25000
+-b10011101 .
+-b1 /
+-b11011101 0
+-1(
+-b10011101 &
+-b10011101 )
+-1%
+-#30000
+-0%
+-#35000
+-1#
+-0!
+-b1 -
+-b1 /
+-0(
+-1%
+-#40000
+-0%
+-#45000
+-1#
+-0!
+-b1 +
+-1%
+-#50000
+-0%
+-#55000
+-1#
+-0!
+-b10 +
+-1%
+-#60000
+-0%
+-#65000
+-b10 /
+-1#
+-0!
+-b11 +
+-1%
+-#70000
+-0%
+-#75000
+-1#
+-1!
+-b0 +
+-b10 -
+-1%
+-#80000
+-0%
+-#85000
+-1#
+-b1 +
+-1%
+-#90000
+-0%
+-#95000
+-1#
+-b10 +
+-1%
+-#100000
+-0%
+-#105000
+-1#
+-b11 +
+-1%
+-#110000
+-0%
+-#115000
+-0!
+-1#
+-b1 ,
+-b0 +
+-1%
+-b1 1
+-#120000
+-0%
+-#125000
+-1#
+-0!
+-b1 +
+-1%
+-#130000
+-0%
+-#135000
+-1#
+-0!
+-b10 +
+-1%
+-#140000
+-0%
+-#145000
+-1#
+-0!
+-b11 +
+-1%
+-#150000
+-0%
+-#155000
+-1#
+-1!
+-b10 ,
+-b0 +
+-1%
+-b10 1
+-#160000
+-0%
+-#165000
+-1#
+-b1 +
+-1%
+-#170000
+-0%
+-#175000
+-1#
+-b10 +
+-1%
+-#180000
+-0%
+-#185000
+-1#
+-b11 +
+-1%
+-#190000
+-0%
+-#195000
+-1#
+-b11 ,
+-b0 +
+-1%
+-b11 1
+-#200000
+-0%
+-#205000
+-1#
+-b1 +
+-1%
+-#210000
+-0%
+-#215000
+-1#
+-b10 +
+-1%
+-#220000
+-0%
+-#225000
+-1#
+-b11 +
+-1%
+-#230000
+-0%
+-#235000
+-1#
+-b100 ,
+-b0 +
+-1%
+-b100 1
+-#240000
+-0%
+-#245000
+-1#
+-b1 +
+-1%
+-#250000
+-0%
+-#255000
+-1#
+-b10 +
+-1%
+-#260000
+-0%
+-#265000
+-1#
+-b11 +
+-1%
+-#270000
+-0%
+-#275000
+-0!
+-1#
+-b101 ,
+-b0 +
+-1%
+-b101 1
+-#280000
+-0%
+-#285000
+-1#
+-0!
+-b1 +
+-1%
+-#290000
+-0%
+-#295000
+-1#
+-0!
+-b10 +
+-1%
+-#300000
+-0%
+-#305000
+-1#
+-0!
+-b11 +
+-1%
+-#310000
+-0%
+-#315000
+-1#
+-0!
+-b110 ,
+-b0 +
+-1%
+-b110 1
+-#320000
+-0%
+-#325000
+-1#
+-0!
+-b1 +
+-1%
+-#330000
+-0%
+-#335000
+-1#
+-0!
+-b10 +
+-1%
+-#340000
+-0%
+-#345000
+-1#
+-0!
+-b11 +
+-1%
+-#350000
+-0%
+-#355000
+-1#
+-1!
+-b111 ,
+-b0 +
+-1%
+-b111 1
+-#360000
+-0%
+-#365000
+-1#
+-b1 +
+-1%
+-#370000
+-0%
+-#375000
+-1#
+-b10 +
+-1%
+-#380000
+-0%
+-#385000
+-b11 /
+-1#
+-b11 +
+-1%
+-#390000
+-0%
+-#395000
+-1#
+-b0 ,
+-b0 +
+-b11 -
+-1%
+-b1000 1
+-#400000
+-0%
+-#405000
+-1#
+-b1 +
+-1%
+-#410000
+-0%
+-#415000
+-1#
+-b10 +
+-1%
+-#420000
+-0%
+-#425000
+-b0 /
+-1#
+-b11 +
+-1%
+-#430000
+-0%
+-#435000
+-0#
+-1"
+-b0 +
+-b0 -
+-1%
+-#440000
+-0%
+-#445000
+-0"
+-1%
+diff --git a/tb_uart_rx.vcd b/tb_uart_rx.vcd
+deleted file mode 100644
+index 1630bc7..0000000
+--- a/tb_uart_rx.vcd
++++ /dev/null
+@@ -1,312 +0,0 @@
+-$date
+-	Fri Jul 24 01:53:47 2026
+-$end
+-$version
+-	Icarus Verilog
+-$end
+-$timescale
+-	1ps
+-$end
+-$scope module tb_uart_rx $end
+-$var wire 1 ! data_valid $end
+-$var wire 8 " data_out [7:0] $end
+-$var parameter 32 # CLK_PER_BIT $end
+-$var parameter 8 $ TEST_DATA $end
+-$var reg 1 % clk $end
+-$var reg 1 & rst_n $end
+-$var reg 1 ' rx $end
+-$scope module dut $end
+-$var wire 1 % clk $end
+-$var wire 1 & rst_n $end
+-$var wire 1 ' rx $end
+-$var parameter 32 ( CLK_PER_BIT $end
+-$var reg 2 ) baud_counter [1:0] $end
+-$var reg 3 * bit_index [2:0] $end
+-$var reg 2 + current_state [1:0] $end
+-$var reg 8 , data_out [7:0] $end
+-$var reg 8 - data_reg [7:0] $end
+-$var reg 1 ! data_valid $end
+-$var reg 2 . next_state [1:0] $end
+-$upscope $end
+-$scope task send_uart_byte $end
+-$var reg 8 / expected_data [7:0] $end
+-$scope begin $ivl_for_loop0 $end
+-$var integer 32 0 i [31:0] $end
+-$upscope $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-$comment Show the parameter values. $end
+-$dumpall
+-b100 (
+-b10101010 $
+-b100 #
+-$end
+-#0
+-$dumpvars
+-b0 0
+-bx /
+-b0 .
+-b0 -
+-b0 ,
+-b0 +
+-b0 *
+-b0 )
+-1'
+-0&
+-0%
+-b0 "
+-0!
+-$end
+-#5000
+-1%
+-#10000
+-0%
+-#15000
+-1&
+-1%
+-#20000
+-0%
+-#25000
+-b10101010 /
+-1%
+-#30000
+-b1 .
+-0'
+-0%
+-#35000
+-b1 +
+-1%
+-#40000
+-0%
+-#45000
+-b10 .
+-b1 )
+-1%
+-#50000
+-0%
+-#55000
+-b0 )
+-b10 +
+-1%
+-#60000
+-0%
+-#65000
+-b1 )
+-1%
+-#70000
+-0%
+-#75000
+-b10 )
+-1%
+-#80000
+-0%
+-#85000
+-b11 )
+-1%
+-#90000
+-0%
+-#95000
+-b1 *
+-b0 )
+-1%
+-#100000
+-0%
+-#105000
+-b1 )
+-1%
+-#110000
+-0%
+-1'
+-b1 0
+-#115000
+-b10 )
+-1%
+-#120000
+-0%
+-#125000
+-b11 )
+-1%
+-#130000
+-0%
+-#135000
+-b10 *
+-b10 -
+-b0 )
+-1%
+-#140000
+-0%
+-#145000
+-b1 )
+-1%
+-#150000
+-0%
+-0'
+-b10 0
+-#155000
+-b10 )
+-1%
+-#160000
+-0%
+-#165000
+-b11 )
+-1%
+-#170000
+-0%
+-#175000
+-b11 *
+-b0 )
+-1%
+-#180000
+-0%
+-#185000
+-b1 )
+-1%
+-#190000
+-0%
+-1'
+-b11 0
+-#195000
+-b10 )
+-1%
+-#200000
+-0%
+-#205000
+-b11 )
+-1%
+-#210000
+-0%
+-#215000
+-b100 *
+-b1010 -
+-b0 )
+-1%
+-#220000
+-0%
+-#225000
+-b1 )
+-1%
+-#230000
+-0%
+-0'
+-b100 0
+-#235000
+-b10 )
+-1%
+-#240000
+-0%
+-#245000
+-b11 )
+-1%
+-#250000
+-0%
+-#255000
+-b101 *
+-b0 )
+-1%
+-#260000
+-0%
+-#265000
+-b1 )
+-1%
+-#270000
+-0%
+-1'
+-b101 0
+-#275000
+-b10 )
+-1%
+-#280000
+-0%
+-#285000
+-b11 )
+-1%
+-#290000
+-0%
+-#295000
+-b110 *
+-b101010 -
+-b0 )
+-1%
+-#300000
+-0%
+-#305000
+-b1 )
+-1%
+-#310000
+-0%
+-0'
+-b110 0
+-#315000
+-b10 )
+-1%
+-#320000
+-0%
+-#325000
+-b11 )
+-1%
+-#330000
+-0%
+-#335000
+-b111 *
+-b0 )
+-1%
+-#340000
+-0%
+-#345000
+-b1 )
+-1%
+-#350000
+-0%
+-1'
+-b111 0
+-#355000
+-b10 )
+-1%
+-#360000
+-0%
+-#365000
+-b11 .
+-b11 )
+-1%
+-#370000
+-0%
+-#375000
+-b0 *
+-b10101010 -
+-b0 )
+-b11 +
+-1%
+-#380000
+-0%
+-#385000
+-b1 )
+-1%
+-#390000
+-0%
+-b1000 0
+-#395000
+-b10 )
+-1%
+-#400000
+-0%
+-#405000
+-b0 .
+-b11 )
+-1%
+-#410000
+-0%
+-#415000
+-1!
+-b10101010 "
+-b10101010 ,
+-b0 )
+-b0 +
+-1%
+-#420000
+-0%
+-#425000
+-0!
+-1%
+-#430000
+-0%
+diff --git a/testbench.vcd b/testbench.vcd
+deleted file mode 100644
+index 801a3d3..0000000
+--- a/testbench.vcd
++++ /dev/null
+@@ -1,133 +0,0 @@
+-$date
+-	Sun Jul 19 18:09:30 2026
+-$end
+-$version
+-	Icarus Verilog
+-$end
+-$timescale
+-	1ps
+-$end
+-$scope module tb_counter $end
+-$var wire 1 ! limit_pulse $end
+-$var wire 8 " count [7:0] $end
+-$var parameter 32 # WIDTH $end
+-$var reg 1 $ clk $end
+-$var reg 1 % enable $end
+-$var reg 8 & limit_value [7:0] $end
+-$var reg 1 ' load $end
+-$var reg 8 ( load_value [7:0] $end
+-$var reg 1 ) rst_n $end
+-$var integer 32 * error_count [31:0] $end
+-$scope module uut $end
+-$var wire 1 $ clk $end
+-$var wire 1 % enable $end
+-$var wire 8 + limit_value [7:0] $end
+-$var wire 1 ' load $end
+-$var wire 8 , load_value [7:0] $end
+-$var wire 1 ) rst_n $end
+-$var parameter 32 - WIDTH $end
+-$var reg 8 . count [7:0] $end
+-$var reg 1 ! limit_pulse $end
+-$upscope $end
+-$scope task check_outputs $end
+-$var reg 8 / expected_count [7:0] $end
+-$var reg 1 0 expected_limit_pulse $end
+-$upscope $end
+-$upscope $end
+-$enddefinitions $end
+-$comment Show the parameter values. $end
+-$dumpall
+-b1000 -
+-b1000 #
+-$end
+-#0
+-$dumpvars
+-x0
+-bx /
+-b0 .
+-b10 ,
+-b100 +
+-b0 *
+-0)
+-b10 (
+-0'
+-b100 &
+-0%
+-0$
+-b0 "
+-0!
+-$end
+-#1000
+-00
+-b0 /
+-#5000
+-1$
+-#10000
+-1'
+-1)
+-0$
+-#15000
+-b10 "
+-b10 .
+-1$
+-#20000
+-1%
+-0'
+-b10 /
+-0$
+-#25000
+-b11 "
+-b11 .
+-1$
+-#30000
+-b11 /
+-0$
+-#35000
+-b100 "
+-b100 .
+-1$
+-#40000
+-b100 /
+-0$
+-#45000
+-1!
+-b0 "
+-b0 .
+-1$
+-#50000
+-10
+-b0 /
+-0$
+-#55000
+-b1 "
+-b1 .
+-0!
+-1$
+-#60000
+-0%
+-00
+-b1 /
+-0$
+-#65000
+-1$
+-#70000
+-1%
+-1'
+-b11 (
+-b11 ,
+-0$
+-#75000
+-b11 "
+-b11 .
+-1$
+-#80000
+-0'
+-b11 /
+-0$
+-#85000
+-b100 "
+-b100 .
+-1$
+-#90000
+-b100 /
+-0$
+diff --git a/work-obj08.cf b/work-obj08.cf
+deleted file mode 100644
+index 36f533a..0000000
+--- a/work-obj08.cf
++++ /dev/null
+@@ -1,13 +0,0 @@
+-v 4
+-file . "tb_fsmvhdl.vhd" "e895d07ededb6c8b6cba1401a73a16ce9f87aff7" "20260722002114.315":
+-  entity tb_fsmvhdl at 1( 0) + 0 on 39;
+-  architecture simulation of tb_fsmvhdl at 9( 108) + 0 on 40;
+-file . "tb_counter_vhdl.vhd" "aa81f6059669a2738222b1fbc61073560768e550" "20260720003328.231":
+-  entity tb_programmable_counter at 1( 0) + 0 on 35;
+-  architecture simulation of tb_programmable_counter at 10( 144) + 0 on 36;
+-file . "programmable_counter.vhd" "b509f3f4cc304ef43e45bf9e32a69dc1bc8f4f06" "20260720003325.151":
+-  entity programmable_counter at 1( 0) + 0 on 33;
+-  architecture rtl of programmable_counter at 21( 805) + 0 on 34;
+-file . "FSMvhdl.vhd" "850711bb6886de6dd87a3a96203ba481123784b0" "20260722002105.049":
+-  entity sequence_detector_1011 at 1( 0) + 0 on 37;
+-  architecture rtl of sequence_detector_1011 at 16( 307) + 0 on 38;
