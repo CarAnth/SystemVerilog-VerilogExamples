@@ -1,0 +1,139 @@
+{
+  "counter-sv": {
+    "language": "sv",
+    "top": "tb_counter",
+    "sources": [
+      "examples/counters/systemverilog/programmable_counter.sv",
+      "examples/counters/systemverilog/tb_counter.sv"
+    ]
+  },
+  "counter-v": {
+    "language": "v",
+    "top": "tb_counter",
+    "sources": [
+      "examples/counters/verilog/programmable_counter.v",
+      "examples/counters/verilog/testbench.v"
+    ]
+  },
+  "counter-vhdl": {
+    "language": "vhdl",
+    "top": "tb_programmable_counter",
+    "sources": [
+      "examples/counters/vhdl/programmable_counter.vhd",
+      "examples/counters/vhdl/tb_counter_vhdl.vhd"
+    ]
+  },
+  "fsm-sv": {
+    "language": "sv",
+    "top": "fsm_tb",
+    "sources": [
+      "examples/fsm/systemverilog/FSM.sv",
+      "examples/fsm/systemverilog/FSM_tb.sv"
+    ]
+  },
+  "fsm-v": {
+    "language": "v",
+    "top": "tb_fsmver",
+    "sources": [
+      "examples/fsm/verilog/fsmverilog.v",
+      "examples/fsm/verilog/tb_fsmverilog.v"
+    ]
+  },
+  "fsm-vhdl": {
+    "language": "vhdl",
+    "top": "tb_fsmvhdl",
+    "sources": [
+      "examples/fsm/vhdl/FSMvhdl.vhd",
+      "examples/fsm/vhdl/tb_fsmvhdl.vhd"
+    ]
+  },
+  "uart-tx": {
+    "language": "sv",
+    "top": "uart_tb",
+    "sources": [
+      "examples/uart/tx/uart_transmitter.sv",
+      "examples/uart/tx/tb_uart.sv"
+    ]
+  },
+  "uart-rx": {
+    "language": "sv",
+    "top": "tb_uart_rx",
+    "sources": [
+      "examples/uart/rx/uart_rx.sv",
+      "examples/uart/rx/tb_uart_rx.sv"
+    ]
+  },
+  "fixed-arbiter": {
+    "language": "sv",
+    "top": "tb_fixed_arbiter",
+    "sources": [
+      "examples/arbiters/fixed_priority/arbiter.sv",
+      "examples/arbiters/fixed_priority/tb_fixed_arbiter.sv"
+    ]
+  },
+  "round-robin": {
+    "language": "sv",
+    "top": "tb_roundrobin",
+    "sources": [
+      "examples/arbiters/round_robin/roundrobin.sv",
+      "examples/arbiters/round_robin/tb_roundrobin.sv"
+    ]
+  },
+  "sync-fifo": {
+    "language": "sv",
+    "top": "tb_sync_fifo",
+    "sources": [
+      "examples/fifo/synchronous/sync_fifo.sv",
+      "examples/fifo/synchronous/tb_fifo.sv"
+    ]
+  },
+  "two-ff": {
+    "language": "sv",
+    "top": "tb_two_ff",
+    "sources": [
+      "examples/cdc/two_ff/2_ff.sv",
+      "examples/cdc/two_ff/two_ff_tb.sv"
+    ]
+  },
+  "pulse-sync": {
+    "language": "sv",
+    "top": "tb_pulse",
+    "sources": [
+      "examples/cdc/pulse/pulse_sync.sv",
+      "examples/cdc/pulse/tb_pulse_sync.sv"
+    ]
+  },
+  "cdc-handshake": {
+    "language": "sv",
+    "top": "tb_cdc",
+    "sources": [
+      "examples/cdc/handshake/cdc.sv",
+      "examples/cdc/handshake/tb_cdc.sv"
+    ]
+  },
+  "multi-cdc": {
+    "language": "sv",
+    "top": "tb_multi_cdc",
+    "sources": [
+      "examples/cdc/reset/reset_synchronizer.sv",
+      "examples/cdc/multi_bit/multi_cdc.sv",
+      "examples/cdc/multi_bit/tb_multi_cdc.sv"
+    ]
+  },
+  "reset-sync": {
+    "language": "sv",
+    "top": "tb_reset_sync",
+    "sources": [
+      "examples/cdc/reset/reset_synchronizer.sv",
+      "examples/cdc/reset/tb_reset_sync.sv"
+    ]
+  },
+  "valid-handshake": {
+    "language": "sv",
+    "top": "tb_handshake",
+    "sources": [
+      "examples/handshake/valid_handshake.sv",
+      "examples/handshake/tb_handshake.sv"
+    ]
+  }
+}
