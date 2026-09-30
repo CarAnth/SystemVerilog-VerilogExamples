@@ -102,12 +102,15 @@ end
 
 always_ff @( posedge rd_clk or rd_rst_n ) begin
     if (!rd_rst_n) begin
-        rd_bin <= '0;
+        rd_bin  <= '0;
         rd_gray <= '0;
+        empty   <=1'b1;
 
     end else begin
         rd_bin <= rd_bin_next;
-        rd_gray <= rd_gray_next;        
+        rd_gray <= rd_gray_next;
+        empty <= empty_next;
+                
     end
 end
 
